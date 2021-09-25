@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400&display=swap');
+//font-family: 'Prompt', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+//font-family: 'Josefin Sans', sans-serif;
+
+@import './components/ui/buttons';
+@import './components/ui/typography';
+@import './components/ui/containers';
+@import './components//ui/forms';
+
+@import './components/layout/navbar';
+@import '../components/layout/footer/styles/footer';
+
+
+@import '../components/utils/modals/styles/modal';
+
+/* Pages */
+
+//Landing Page
+@import '../components//pages/landingPage/styles/caurosel';
+@import '../components//pages/landingPage/styles/banner';
+@import '../components/pages/landingPage/styles/categories';
+
+//User
+@import '../components/pages/user/styles/profile';
+
+
+//Products Clothing
+@import '../components/pages/products/styles/clothing';
+@import '../components/pages/products/styles/productCard';
+@import '../components/pages/products/styles/addProductForm';

@@ -1,0 +1,145 @@
+$primary: #f8f6f4;
+
+.clothing-title-1{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: #3e4152;
+    letter-spacing: .15em;
+    font-size: 1.8em;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 50px 0 10px 30px;
+    max-height: 5em;
+    font-weight: 500;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.clothing-title-2{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: #3e4152;
+    letter-spacing: .15em;
+    font-size: 0.8em;
+    max-height: 5em;
+    font-weight: 500;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.clothing-title-3-faded{
+    line-height: normal;
+    font-weight: bold;
+    float: left;
+    color: rgba(45,45,45,.5);
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.sort-dropdown{
+    border: 0;
+    outline: none;
+    margin: auto 20px auto auto;
+  
+}
+
+.sort-dropdown-control{
+    outline: none; 
+}
+
+.dropdown-container{
+    width: auto;
+    max-width: 200px;
+    height: '48px';
+    background-color: $primary;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    display: block;
+    box-sizing: border-box;
+    text-rendering: optimizeSpeed;
+    transition: height;
+
+    .dropdown-section-1{
+        display: flex;
+
+        .filter-dropdown-heading{
+            width: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            color: #3e4152;
+            letter-spacing: .15em;
+            font-size: 0.8em;
+            max-height: 5em;
+            font-weight: 500;
+            margin-block-start: 1.33em;
+            margin-block-end: 1.33em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            text-align: left;
+            padding: 8px 12px 8px 12px;
+            margin: 10px 0 2px 0;
+            font-family: 'Prompt', sans-serif;
+        }
+    
+        .filter-dropdown-icon{
+            display: block;
+            width: 20px;
+            margin: auto 0 auto auto;
+            padding: auto 12px;
+        }
+    }
+
+    .dropdown-section-2{
+        display: flex;
+        padding: 20px 12px 10px 40px;
+
+        .filter-dropdown-types-container{
+            display: block;
+
+            .filter-dropdown-type{
+                line-height: normal;
+                font-weight: bold;
+                color: rgba(45,45,45,.5);
+                font-size: 14px;
+                text-transform: uppercase;
+                text-align: left;
+
+                &:hover{
+                    color: rgb(0, 0, 0);
+                }
+            }
+
+        }
+    }
+
+    @media screen and(max-width:900px) {
+        max-width: 100%;
+        
+    }
+    
+}
+
+
+
+
+.clothing-filters{
+    height: auto;
+    background-color: $primary;
+}
+
+.clothing-card-container{
+    background-color: $primary;
+    display: flex;
+    flex-wrap: wrap;
+}

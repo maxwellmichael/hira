@@ -1,0 +1,123 @@
+.profile-main{
+    padding-bottom: 100px;
+
+    .profile-icon{
+        width:150px;
+        height:150px;
+        border: 2px solid black;
+        border-radius: 100%;
+        margin: 60px auto 0px auto;
+        overflow: hidden;
+    
+        svg{
+            width: 75px;
+            height: 75px;
+            margin: 30px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+        }
+    
+    
+    }
+    
+    .profile-name{
+    
+        h1{
+            text-transform: capitalize;
+            font-family: 'Prompt', sans-serif;
+            font-size: 50px;
+            font-weight: 700;
+            margin: 20px 0px 0px;
+            letter-spacing: -0.025em;
+            margin-block-start: 0.67em;
+            margin-block-end: 0.67em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            cursor: pointer;
+        }
+    }
+    
+    .profile-stats{
+        margin: 20px auto 0px auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        width: 450px;
+    
+        .stat-item{
+            margin:auto;
+            text-align: center;
+            max-width: 100px;
+    
+            .value{
+                font-weight: 700;
+                font-size: 20px;
+            }
+    
+            p{
+                color: rgb(155, 155, 155);
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-top: 5px;
+            }
+        }
+    
+        @media screen and(max-width: 700px){
+            width: 300px;
+            .stat-item{
+            
+                .value{
+                    font-size: 18px;
+                }
+        
+                p{
+                    font-size: 10px;
+                }
+            }
+    
+        }
+    
+    }
+
+    .profile-title{
+        font-weight: 900;
+        letter-spacing: -0.025em;
+        font-size: 1.17em;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    .profile-address{
+        display: block;
+        margin: 30px auto 0px;
+        width: 600px;
+        border: 1px solid black;
+        text-align: left;
+
+        .address-name{
+            color: #696E79;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-transform: capitalize;
+            width: calc(100% - 60px);
+            line-height: 1.15;
+            padding: 12px;
+        }
+        p{
+            color:#696E79;
+            font-size: 14px;
+            line-height: 1.15;
+            margin: 12px;
+        }
+    }
+
+
+}
+

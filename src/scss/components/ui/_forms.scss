@@ -1,0 +1,26 @@
+.form-main{
+    width: 40%;
+    height: auto;
+    margin: 100px auto auto auto;
+    display: block;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 12px;
+
+    .title{
+        font-size: 40px;
+        font-weight: 500;
+        margin-bottom: 24px;
+        user-select: none;
+        line-height: 1.42857143;
+        color: #424553;
+    }
+
+
+    @media screen and(max-width:900px) {
+        width: 95%;
+        padding: 10px;
+    }
+
+    
+}
