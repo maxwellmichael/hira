@@ -13,7 +13,6 @@ const Register = (props) => {
 
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     props.dispatch(REGISTER(data.email, data.password, data.name));
   });
 

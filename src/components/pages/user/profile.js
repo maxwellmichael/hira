@@ -25,7 +25,7 @@ const Profile = ({dispatch, user, address})=>{
     // console.log('address', address)
 
     return(
-        <div className='profile-main'>
+        <div className='profile-main' style={{overflow:'hidden'}}>
             <Grid container spacing={2}>
             
                 <Grid item xs={12}> 
@@ -51,7 +51,7 @@ const Profile = ({dispatch, user, address})=>{
                     </div>
                 </Grid>
                 <Grid item xs={12}>
-                {user && <Button color='error' onClick={()=>dispatch(LOGOUT())} variant="contained">Logout</Button>}
+                {user && <Button onClick={()=>dispatch(LOGOUT())} variant="contained">Logout</Button>}
                 </Grid>
                 <Grid item xs={12}>
                     <div className='profile-title'>
@@ -60,7 +60,7 @@ const Profile = ({dispatch, user, address})=>{
                     <Grid item xs={12}>
                         <Button onClick={()=>dispatch(SHOW_MODAL('ADDRESS_FORM',{}))} variant="outlined">Add</Button>
                     </Grid>
-                    <Grid container xs={12}>
+                    <Grid container>
                         {address.map((item, i)=>{
                             return(
                                 <div key={i} className='profile-address'>

@@ -27,7 +27,7 @@ const Modal = (props)=>{
         <motion.div className='nmodal'>
             
             <div className='headder'>
-                <Button onClick={()=>props.dispatch(HIDE_MODAL())} variant="contained" color="secondary">
+                <Button onClick={()=>props.dispatch(HIDE_MODAL())} variant="contained" style={{backgroundColor: '#f44336'}}>
                     <GrFormClose />
                 </Button>
             </div>

@@ -1,5 +1,6 @@
 import './App.css';
 import './scss/main.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from './components/layout/index';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Routes from './routes/routes';
@@ -12,6 +13,8 @@ import {createFirestoreInstance} from 'redux-firestore';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { firebase,reactReduxFirebaseConfig as rrfConfig } from './firebase/config';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import {ToastContainer} from 'react-toastify';
+
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -48,6 +51,13 @@ function App(){
         <Router>
           <ThemeProvider theme={theme}>
             <Layout>
+              <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+              />
               <div className="App">
                 <Routes/>
               </div>

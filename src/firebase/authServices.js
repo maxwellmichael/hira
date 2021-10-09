@@ -5,5 +5,6 @@ export const getAuthenticationStatus = () => {
 }
 
 export const auth = firebase.auth();
+auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
 
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();

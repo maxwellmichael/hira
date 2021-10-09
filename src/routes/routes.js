@@ -28,6 +28,10 @@ const Routes = ()=>{
             path: '/user/register',
             component: Register,
         },
+        {
+            path: '/cart',
+            component: CartPage,
+        },
     ]
 
     const mainRoutes = [
@@ -42,10 +46,6 @@ const Routes = ()=>{
     ]
 
     const privateRoutes = [
-        {
-            path: '/cart',
-            component: CartPage,
-        },
         {
             path: '/user/profile',
             component: Profile,

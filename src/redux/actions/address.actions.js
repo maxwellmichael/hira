@@ -5,6 +5,7 @@ export const ADD_ADDRESS_TO_FIRESTORE = (data) => async (dispatch) => {
     
     const firestore = firebase.firestore();
     const address = firestore.collection('address')
+    console.log(data)
     address.add(data)
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);

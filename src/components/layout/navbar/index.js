@@ -36,6 +36,7 @@ const NavBar = (props)=>{
   const AccountMenu = (
     <Menu
       anchorEl={anchorEl}
+      getContentAnchorEl={null}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       id='account-menu'
       keepMounted

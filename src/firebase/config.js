@@ -13,7 +13,7 @@ var firebaseConfig = {
   messagingSenderId: "940862859574",
   appId: "1:940862859574:web:e49695980680caa72f2b97",
   measurementId: "G-Q38QFRMTFE",
-  };
+};
 
 export const reactReduxFirebaseConfig = {
   userProfile: "users",
