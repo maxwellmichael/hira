@@ -5,7 +5,6 @@ export const ADD_ADDRESS_TO_FIRESTORE = (data) => async (dispatch) => {
     
     const firestore = firebase.firestore();
     const address = firestore.collection('address')
-    console.log(data)
     address.add(data)
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
@@ -44,9 +43,8 @@ export const GET_ADDRESS = (uid) => async (dispatch) => {
     const firestore = firebase.firestore();
     firestore.collection('address').where('user_id','==',uid).get()
     .then((querySnapshot) => {
+        dispatch(CLEAR_ADDRESS())
         querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
             dispatch(ADD_ADDRESS({...doc.data(), id:doc.id}))
         });
     })

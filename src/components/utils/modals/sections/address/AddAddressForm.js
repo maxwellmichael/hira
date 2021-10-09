@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { ADD_ADDRESS_TO_FIRESTORE } from "../../../../../redux/actions/address.actions";
 import {connect} from 'react-redux';
-//import {auth} from '../../../../../firebase/authServices';
 import {TextField, Grid} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import {AiTwotoneSave} from 'react-icons/ai';
@@ -20,13 +19,13 @@ function AddressForm(props) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
         <Grid item xs={12}><div className='title'>Add New Shipping Address</div></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="Name" {...register("name", { required: true })} /></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="Address" {...register("address", { required: true })} /></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="Mobile" {...register("mobile", { required: true })} /></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="Pincode" {...register("pincode", { required: true })} /></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="State" {...register("state", { required: true })} /></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="Locality" {...register("locality", { required: true })} /></Grid>
-        <Grid item xs={12}><TextField style={{width:'80%'}} label="District" {...register("district", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="Name" {...register("name", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="Address" {...register("address", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="Mobile" {...register("mobile", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="Pincode" {...register("pincode", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="State" {...register("state", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="Locality" {...register("locality", { required: true })} /></Grid>
+        <Grid item xs={12}><TextField style={{width:'100%'}} label="District" {...register("district", { required: true })} /></Grid>
         <Grid item xs={12}>
           <Button startIcon={<AiTwotoneSave />} type='submit' variant="contained" color="primary">
             Save

@@ -8,6 +8,7 @@ import {GET_ADDRESS, REMOVE_ADDRESS_FROM_FIRESTORE} from '../../../redux/actions
 import {LOGOUT} from '../../../redux/actions/user.actions';
 import {useEffect} from 'react';
 import {ReactComponent as DefaultUserLogo} from '../../../images/icons/default_user.svg';
+import {RiDeleteBin5Line, RiEditLine} from 'react-icons/ri';
 
 const Profile = ({dispatch, user, address})=>{
 
@@ -72,9 +73,9 @@ const Profile = ({dispatch, user, address})=>{
                                     <p>{item.district} - {item.pincode}</p>
                                     <p>{item.state}</p>
                                     <p>Mobile: {item.mobile}</p>
-                                    <ButtonGroup style={{margin:'auto', width: '100%'}} color="primary" aria-label="outlined primary button group">
-                                        <Button onClick={()=>dispatch(SHOW_MODAL('EDIT_ADDRESS_FORM',item))}>Edit</Button>
-                                        <Button onClick={()=>dispatch(REMOVE_ADDRESS_FROM_FIRESTORE(item.id))}>Remove</Button>
+                                    <ButtonGroup style={{margin:'auto', width: '100%'}} aria-label="outlined primary button group">
+                                        <Button style={{backgroundColor:'#e0e0e0'}} onClick={()=>dispatch(SHOW_MODAL('EDIT_ADDRESS_FORM',item))}><RiEditLine/></Button>
+                                        <Button style={{backgroundColor:'#f44336'}} onClick={()=>dispatch(REMOVE_ADDRESS_FROM_FIRESTORE(item.id))}><RiDeleteBin5Line/></Button>
                                     </ButtonGroup>
                                 </div>
                             )
