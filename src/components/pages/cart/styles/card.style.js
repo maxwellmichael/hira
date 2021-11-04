@@ -13,16 +13,24 @@ const cardStyle = makeStyles((theme)=>{
         },
 
         cardItemName:{
-            fontFamily: 'Prompt',
+            fontFamily: 'AvenirNext',
             fontSize: 18,
             fontWeight: 400,
             textAlign: 'left',
             margin: 'auto',
+            maxWidth:200,
+            overflow: 'hidden',
+            display:'-webkit-box',
+            WebkitLineClamp: 6,
+            WebkitBoxOrient: 'vertical',
+            
+           
             ['@media (max-width:780px)']: {// eslint-disable-line no-useless-computed-key
                 paddingLeft: 16,
                 paddingTop: 6,
                 fontSize: 14,
                 fontWeight: 300,
+                WebkitLineClamp: 4,
             }
 
         },

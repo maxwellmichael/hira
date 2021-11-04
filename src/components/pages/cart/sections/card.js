@@ -2,19 +2,20 @@ import { Grid } from "@material-ui/core"
 import cardStyle from "../styles/card.style";
 import { ButtonGroup, Button } from "@material-ui/core";
 import {GrAdd,GrSubtract} from 'react-icons/gr';
-import { useState} from "react";
-import { REMOVE_PRODUCT_FROM_FIRESTORE_CART } from "../../../../redux/actions/cart.actions";
+import { REMOVE_PRODUCT_FROM_FIRESTORE_CART, UPDATE_PRODUCT_TO_FIRESTORE_CART } from "../../../../redux/actions/cart.actions";
 import { useDispatch } from 'react-redux'
 
 const Card = (props)=>{
     const dispatch = useDispatch()
     const classes = cardStyle();
-    const [quantity, setQuantity] = useState(1);
 
     const addQuantity = ()=>{
-        const newQuantity = quantity;
+        let newQuantity = props.set.quantity;
         if(newQuantity<10){
-            setQuantity(newQuantity+1);
+            newQuantity+=1;
+            let product = props.set;
+            product.quantity = newQuantity;
+            dispatch(UPDATE_PRODUCT_TO_FIRESTORE_CART(product))
         }
         else{
             console.log('Product Quantity cannot be greater than 10')
@@ -23,9 +24,12 @@ const Card = (props)=>{
     }
 
     const reduceQuantity = ()=>{
-        const newQuantity = quantity;
+        let newQuantity = props.set.quantity;
         if(newQuantity>1){
-            setQuantity(newQuantity-1);
+            newQuantity-=1;
+            let product = props.set;
+            product.quantity = newQuantity;
+            dispatch(UPDATE_PRODUCT_TO_FIRESTORE_CART(product));
         }
         else{
             console.log('Product Quantity cannot be Less than 1')
@@ -35,39 +39,36 @@ const Card = (props)=>{
    
     return(
         <Grid style={{margin:0, boxShadow:'0px -1px rgba(0, 0, 0, 0.2)'}} container spacing={3}>
-            <Grid item xs={6} md={7}>
+            <Grid item xs={7} md={8}>
                 <Grid container>
 
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={5}>
                         <img className={classes.cardImage} src={props.set.main_image.src} alt='Product Card' />
                     </Grid>
 
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={7}>
                         <p className={classes.cardItemName}>{props.set.name}</p>
                     </Grid>
 
                 </Grid>
             </Grid>
-            <Grid item xs={6} md={5}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <ButtonGroup variant="contained" aria-label="outlined primary button group">
+            <Grid item xs={5} md={4}>
+                <Grid container direction='column' spacing={3} alignItems='flex-start' >
+                    <Grid item>
+                        <ButtonGroup disableElevation style={{border:'1px solid #771f52'}} variant="contained" color='primary'>
                             <Button onClick={()=>addQuantity()}><GrAdd/></Button>
-                                <Button disabled >{quantity}</Button>
+                            <Button disableRipple disableFocusRipple disableTouchRipple><div style={{color:'#771f52'}} className='subtitle1'>{props.set.quantity}</div></Button>
                             <Button onClick={()=>reduceQuantity()}><GrSubtract/></Button>
                         </ButtonGroup>
                     </Grid>
 
-                    <Grid item xs={12}>
-                        <p className={classes.cardItemPrice}>Price: ₹{props.set.selling_price}/-</p>
+                    <Grid item>
+                        <div style={{textAlign:'left'}} className='subtitle1'>Per item: ₹{props.set.selling_price}</div>
+                        <div style={{textAlign:'left'}} className='subtitle1'>Total: ₹{props.set.selling_price*props.set.quantity}</div>
                     </Grid>
 
-                    <Grid item xs={12}>
-                        <p className={classes.cardItemPrice}>Total: ₹{props.set.selling_price*quantity}/-</p>
-                    </Grid>
-
-                    <Grid item xs={12}>
-                        <Button onClick={()=>dispatch(REMOVE_PRODUCT_FROM_FIRESTORE_CART(props.set.id))} variant='contained' color='secondary' size='small'>
+                    <Grid item>
+                        <Button disableElevation onClick={()=>dispatch(REMOVE_PRODUCT_FROM_FIRESTORE_CART(props.set.id))} variant='contained' color='secondary' size='small'>
                             Remove
                         </Button>
                     </Grid>

@@ -44,7 +44,9 @@ const ClothingPage = ({ dispatch, products, categories, materials, selectedFilte
 
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={3}>
-                        <FilterCheckBox newFilters={filters} />
+                        <motion.div transition={{duration:0.8}} initial={{x:-400}} animate={{x:0 }}>
+                            <FilterCheckBox newFilters={filters} />
+                        </motion.div>
                     </Grid>
                     <Grid item xs={12} md={9} style={{paddingTop: 20}}>
                         <Grid container justify='space-evenly' >
