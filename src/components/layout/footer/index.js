@@ -4,7 +4,7 @@ import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineTwitter} from 'react-ico
 const Footer = ()=>{
 
     return(
-        <Grid style={{margin:'100px 0px 0px 0px', padding:'0px 0px 20px 0px',overflow:'hidden',backgroundColor:'#f1eee9',boxShadow:'gba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px'}} container>
+        <Grid style={{margin:'100px 0px 0px 0px', padding:'0px 0px 20px 0px',overflow:'hidden',backgroundColor:'#fff',boxShadow:'gba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px'}} container>
 
             <Grid container>
 
@@ -60,7 +60,7 @@ const Footer = ()=>{
 
             
 
-            <Grid style={{width:'100vw',paddingTop:30,backgroundColor:'#f1eee9',margin:0}} container spacing={1}>
+            <Grid style={{width:'100vw',paddingTop:30,backgroundColor:'#fff',margin:0}} container spacing={1}>
                 
                 <Grid item xs={4}>
                     <div className='footer-title'><a href='/'>Hira.com</a></div>

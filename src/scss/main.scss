@@ -1,7 +1,17 @@
+@font-face {
+    font-family: 'AvenirNext';
+    src: local('AvenirNextLTPro-Regular'), url(../fonts/AvenirNextLTPro-Regular.otf), format('opentype');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400&display=swap');
 //font-family: 'Prompt', sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 //font-family: 'Josefin Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+//font-family: 'Nunito', sans-serif;
 
 @import './components/ui/buttons';
 @import './components/ui/typography';
@@ -29,3 +39,4 @@
 @import '../components/pages/products/styles/clothing';
 @import '../components/pages/products/styles/productCard';
 @import '../components/pages/products/styles/addProductForm';
+@import '../components/pages/products/styles/filterCheckBox';

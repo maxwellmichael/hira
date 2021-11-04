@@ -1,0 +1,46 @@
+.filter-checkbox-main{
+    background-color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    z-index: 99;
+    border: 1px solid #edebef;
+    min-height: 40px;    
+    top:0;
+    position: sticky;
+    
+    .dropdown-display{
+       
+        .title{
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 15px;
+            clear: both;
+            color: #771f52;
+            letter-spacing: 0.15em;
+            display: block;
+            margin: 12.5px;
+            padding-top: 4px;
+            text-align: center;
+        }
+
+        .button{
+            margin: 12.5px;
+            padding-top: 1px;
+        }
+    }
+
+    .dropdown-content{
+        margin-top: 2px;
+        transition: height 2s ease-in-out;
+
+        .content-title{
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            clear: both;
+            color: #282c3f;
+            display: block;
+            padding: 12px auto;
+        }
+    }
+    
+}

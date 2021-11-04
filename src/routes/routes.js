@@ -32,6 +32,7 @@ const Routes = ()=>{
             path: '/cart',
             component: CartPage,
         },
+        
     ]
 
     const mainRoutes = [
@@ -55,11 +56,10 @@ const Routes = ()=>{
    
     return(
         <Switch>
-            {mainRoutes.map((route,i)=><Route key={i} path={route.path} exact component={route.component} />)}
+            {mainRoutes.map((route,i)=><Route key={i} path={route.path} exact render={props=><route.component {...props} />} />)}
             {productRoutes.map((route,i)=><RouteWithSubRoutes key={i} {...route} />)}
             {userRoutes.map((route,i)=><RouteWithSubRoutes key={i} {...route} />)}
             {privateRoutes.map((route,i)=><PrivateRoute key={i} {...route} />)}
-          
         </Switch>
     )
 }

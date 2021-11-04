@@ -12,7 +12,7 @@ const FilterDropdown = (props)=>{
 
 
     return(
-        <div className="dropdown-container" onClick={()=>setDropped(!dropped)}>
+        <div style={{backgroundColor:'#fff'}} className="dropdown-container" onClick={()=>setDropped(!dropped)}>
             <div className="dropdown-section-1">
                 <div className="filter-dropdown-heading">{props.filter.name}</div>
                 <div className="filter-dropdown-icon">{dropped?<IoIosArrowUp style={{fontSize:'24px'}} />:<IoIosArrowDown style={{fontSize:'24px'}} />}</div>

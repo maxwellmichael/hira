@@ -2,6 +2,7 @@ import Footer from './footer';
 import {connect} from 'react-redux';
 import { LOGIN_SUCCESS } from '../../redux/actions/user.actions';
 import { GET_CART_FROM_FIRESTORE } from '../../redux/actions/cart.actions';
+import { GET_CATEGORIES_FROM_FIRESTORE } from '../../redux/actions/product.actions';
 import Modal from '../utils/modals';
 import NavBar from './navbar';
 import {useEffect} from 'react';
@@ -18,6 +19,7 @@ const Layout = ({dispatch,modal,children})=>{
                 }
                 dispatch(LOGIN_SUCCESS(response.data));
                 dispatch(GET_CART_FROM_FIRESTORE());
+                dispatch(GET_CATEGORIES_FROM_FIRESTORE())
             } 
             else {
                 console.log('Not Logged In')
@@ -26,7 +28,7 @@ const Layout = ({dispatch,modal,children})=>{
         return () => unsubscribe(); 
     },[dispatch])
     return(
-        <div style={{backgroundColor:'#f8f6f4'}} className='layout'>
+        <div style={{backgroundColor:'#fff'}} className='layout'>
             {modal.isVisible?<Modal />:null}
             <NavBar/>
             {children}

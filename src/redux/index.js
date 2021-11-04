@@ -4,6 +4,8 @@ import cartReducer from './reducers/cart.reducer';
 import userReducer from './reducers/user.reducer';
 import modalReducer from './reducers/modal.reducer';
 import addressReducer from './reducers/address.reducer';
+import filterCheckBoxReducer from './reducers/filterCheckBox.reducer';
+
 //import { connectRouter } from 'connected-react-router'
 import { firestoreReducer } from 'redux-firestore';
 
@@ -16,6 +18,7 @@ const rootReducer = combineReducers(
         firestore: firestoreReducer,
         modal: modalReducer,
         address: addressReducer,
+        filterCheckBox: filterCheckBoxReducer,
     }
 );
 

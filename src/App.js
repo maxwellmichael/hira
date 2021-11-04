@@ -20,24 +20,29 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk
 
 const theme = createMuiTheme({
   palette: {
+
     primary: {
       main: '#f8f6f4',
     },
     secondary: {
-      main: '#f1eee9',
+      main: '#771f52',
+    },
+    error:{
+      main: '#ff3f6c',
     },
     background: {
-      default: '#f8f6f4',
+      default: '#fff',
     }
   },
 
   typography: {
-    fontFamily: 'Josefin Sans',
+    fontFamily: 'AvenirNext',
     fontWeightLight: 400,
     fontWeightRegular: 500,
     fontWeightMedium: 600,
     fontWeightBold: 700, 
   }
+
 }) 
 
 
