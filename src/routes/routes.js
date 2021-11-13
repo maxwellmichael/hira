@@ -3,7 +3,7 @@ import LandingPage from '../components/pages/landingPage'
 import About from '../components/pages/about';
 import CartPage from '../components/pages/cart';
 import LogIn from '../components/pages/user/login';
-import Profile from '../components/pages/user/profile';
+import Profile from '../components/pages/user/profile/index';
 import Register from '../components/pages/user/register';
 import ClothingPage from '../components/pages/products';
 import ProductDetailsView from '../components/pages/products/sections/clothing/productDetails';

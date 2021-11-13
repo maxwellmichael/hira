@@ -1,0 +1,17 @@
+.tabs-main {
+    background-color: #f8f8f8;
+    width: 100vw;
+    padding: 0;
+    border: 1px solid #e1e1e1;
+
+    .nav-tabs {
+        border: none;
+    }
+
+    .tab-content {
+        width: 100vw;
+        margin: 0;
+        padding: 1.6rem;
+        background-color: white;
+    }
+}
