@@ -5,7 +5,7 @@ import userReducer from './reducers/user.reducer';
 import modalReducer from './reducers/modal.reducer';
 import addressReducer from './reducers/address.reducer';
 import filterCheckBoxReducer from './reducers/filterCheckBox.reducer';
-
+import ordersReducer from './reducers/orders.reducer';
 //import { connectRouter } from 'connected-react-router'
 import { firestoreReducer } from 'redux-firestore';
 
@@ -19,6 +19,7 @@ const rootReducer = combineReducers(
         modal: modalReducer,
         address: addressReducer,
         filterCheckBox: filterCheckBoxReducer,
+        orders: ordersReducer,
     }
 );
 

@@ -1,5 +1,5 @@
-import { auth, googleAuthProvider } from "../../firebase/authServices";
-import { firebase } from '../../firebase/config';
+import { auth, googleAuthProvider } from "../firebase/authServices";
+import { firebase } from '../firebase/config';
 
 
 export const getUserWithEmailAndPassword = async (email, password) => {

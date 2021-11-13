@@ -80,13 +80,13 @@ const Footer = ()=>{
             <div className='footer-icons-container'>
                 <div className='footer-icons'>
                     <div className='icon'>
-                        <AiOutlineFacebook />
+                        <AiOutlineFacebook color='secondary' />
                     </div> 
                     <div className='icon'>
-                        <AiOutlineTwitter />
+                        <AiOutlineTwitter color='secondary' />
                     </div> 
                     <div className='icon'>
-                        <AiOutlineInstagram />
+                        <AiOutlineInstagram color='secondary' />
                     </div> 
                     
                 </div>

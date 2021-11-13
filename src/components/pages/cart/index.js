@@ -3,6 +3,10 @@ import Card from './sections/card';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { GET_CART_FROM_FIRESTORE } from '../../../redux/actions/cart.actions';
+import { ADD_ORDER_TO_FIRESTORE } from '../../../redux/actions/orders.actions';
+import { firebase } from '../../../firebase/config';
+import { firestoreAutoId } from '../../../firebase/services';
+import { getCurrentUser } from '../../../services/user';
 
 const CartPage = ({ dispatch, cart }) => {
 
@@ -15,6 +19,22 @@ const CartPage = ({ dispatch, cart }) => {
     const shippingAmount = totalAmount < 10000 ? 500 : 0;
 
     cart.forEach((item) => totalAmount = totalAmount + item.selling_price * item.quantity)
+
+    const handleCheckout = async () => {
+        let response = await getCurrentUser();
+        if (response.hasError) {
+            return console.log(response.error);
+        }
+        const order = {
+            id: firestoreAutoId(),
+            userId: response.data.uid,
+            status: 'Shipped',
+            totalAmount,
+            shippingAmount,
+            createdAt: firebase.firestore.Timestamp.now(),
+        };
+        return dispatch(ADD_ORDER_TO_FIRESTORE(order))
+    }
 
 
     return (
@@ -69,10 +89,10 @@ const CartPage = ({ dispatch, cart }) => {
 
                     <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
                         <Grid item xs={6}>
-                            <div style={{fontWeight:600}} className='headline6'>Total Amount:</div>
+                            <div style={{ fontWeight: 600 }} className='headline6'>Total Amount:</div>
                         </Grid>
                         <Grid item xs={6}>
-                            <div style={{fontWeight:600}} className='headline6'>₹{shippingAmount + totalAmount}</div>
+                            <div style={{ fontWeight: 600 }} className='headline6'>₹{shippingAmount + totalAmount}</div>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -82,7 +102,12 @@ const CartPage = ({ dispatch, cart }) => {
                 </Grid>
 
                 <Grid container justify='space-evenly'>
-                    <Button style={{width:'80%', height:50}} variant='contained' color='secondary'><span style={{color:'white'}} className='headline6'>CHECKOUT</span></Button>
+                    <Button
+                        onClick={() => handleCheckout()}
+                        style={{ width: '80%', height: 50 }}
+                        variant='contained' color='secondary'>
+                        <span style={{ color: 'white' }} className='headline6'>CHECKOUT</span>
+                    </Button>
                 </Grid>
 
             </Grid>

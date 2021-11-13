@@ -6,6 +6,7 @@ import LogIn from '../components/pages/user/login';
 import Profile from '../components/pages/user/profile';
 import Register from '../components/pages/user/register';
 import ClothingPage from '../components/pages/products';
+import ProductDetailsView from '../components/pages/products/sections/clothing/productDetails';
 import RouteWithSubRoutes from './routesWithSubRoutes';
 import PrivateRoute from './privateRoute';
 
@@ -16,6 +17,10 @@ const Routes = ()=>{
         {
             path:'/products',
             component: ClothingPage,
+        },
+        {
+            path:'/products/details',
+            component: ProductDetailsView,
         },
     ];
 
@@ -57,9 +62,10 @@ const Routes = ()=>{
     return(
         <Switch>
             {mainRoutes.map((route,i)=><Route key={i} path={route.path} exact render={props=><route.component {...props} />} />)}
-            {productRoutes.map((route,i)=><RouteWithSubRoutes key={i} {...route} />)}
-            {userRoutes.map((route,i)=><RouteWithSubRoutes key={i} {...route} />)}
-            {privateRoutes.map((route,i)=><PrivateRoute key={i} {...route} />)}
+            {/* {productRoutes.map((route,i)=><RouteWithSubRoutes exact={true} key={i} {...route} />)} */}
+            {productRoutes.map((route,i)=><RouteWithSubRoutes exact={true} key={i} {...route} />)}
+            {userRoutes.map((route,i)=><Route key={i} component={route.component} path={route.path} exact={true} />)}
+            {privateRoutes.map((route,i)=><PrivateRoute exact={true} key={i} {...route} />)}
         </Switch>
     )
 }

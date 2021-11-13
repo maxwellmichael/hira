@@ -38,6 +38,7 @@
     "redux-firestore": "^0.15.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

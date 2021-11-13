@@ -1,15 +1,19 @@
-import { Grid, IconButton } from '@material-ui/core';
+import { Grid} from '@material-ui/core';
 import { connect } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
-import { ADD_PRODUCT_TO_FIRESTORE_CART } from '../../../../../redux/actions/cart.actions';
-import { IoMdAdd } from 'react-icons/io'
+// import { ADD_PRODUCT_TO_FIRESTORE_CART } from '../../../../../redux/actions/cart.actions';
+// import { IoMdAdd } from 'react-icons/io';
+import { useHistory } from 'react-router-dom';
+
 
 const ProductCard = (props) => {
     const images = props.product.items.map((item) => item.image_url.src)
     images.push(props.product.main_image.src);
     const { inView, ref } = useInView();
     const animationControl = useAnimation();
+    let history = useHistory();
+
 
     if (inView) {
         animationControl.start({
@@ -22,11 +26,16 @@ const ProductCard = (props) => {
         });
     }
 
+    const redirect = (e)=>{
+        e.preventDefault();
+        history.push({pathname:'/products/details', state:props.product})
+    }
+
 
     return (
         <div ref={ref}>
             <motion.div className="product-card" initial={{ y: 600, opacity: 0 }} animate={animationControl}>
-                <Grid container style={{ margin: 0, width: '100%', padding: 0 }}>
+                <Grid onClick={redirect} container style={{ margin: 0, width: '100%', padding: 0 }}>
                     <div className="product-tag"><h2>SALE {Math.round(100 - (parseInt(props.product.selling_price) / parseInt(props.product.maximum_retail_price) * 100))}% OFF</h2></div>
                     <Grid xs={12} item style={{ margin: 0, width: '100%', padding: 0 }}>
                         <div style={{ backgroundImage: `url(${props.product.main_image.src})` }} className='product-card-image'>
@@ -40,9 +49,9 @@ const ProductCard = (props) => {
                                 <Grid container spacing={3}>
 
                                     <Grid item xs={12}>
-                                        <IconButton onClick={() => props.dispatch(ADD_PRODUCT_TO_FIRESTORE_CART(props.product))} variant="contained" color="secondary">
+                                        {/* <IconButton onClick={() => props.dispatch(ADD_PRODUCT_TO_FIRESTORE_CART(props.product))} variant="contained" color="secondary">
                                             <IoMdAdd />
-                                        </IconButton>
+                                        </IconButton> */}
                                         <div className="product-card-product-primary" style={{ color: '#1f1f21' }}>
                                             {props.product.name}
                                         </div>

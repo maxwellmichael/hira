@@ -31,7 +31,9 @@ const Layout = ({dispatch,modal,children})=>{
         <div style={{backgroundColor:'#fff'}} className='layout'>
             {modal.isVisible?<Modal />:null}
             <NavBar/>
-            {children}
+            <div style={{ marginTop: '4rem'}}>
+                {children}
+            </div>
             <Footer/>
         </div>
     )

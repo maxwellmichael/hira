@@ -8,8 +8,15 @@ import {AiTwotoneSave} from 'react-icons/ai';
 import {HIDE_MODAL} from '../../../../../redux/actions/modal.actions';
 
 function AddressForm(props) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, unregister } = useForm();
   const onSubmit = data =>{
+    unregister('name');
+    unregister('address');
+    unregister('mobile');
+    unregister('pincode');
+    unregister('state');
+    unregister('locality');
+    unregister('district');
     data = {...data, user_id:props.user.uid}
     props.dispatch(HIDE_MODAL());
     props.dispatch(ADD_ADDRESS_TO_FIRESTORE(data))
@@ -18,7 +25,11 @@ function AddressForm(props) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
-        <Grid item xs={12}><div className='title'>Add New Shipping Address</div></Grid>
+        <Grid item xs={12}>
+          <div className='title'>Add New Shipping Address</div>
+          <hr style={{width:'100%', marginTop:'-8px'}} className='center-ball'></hr>
+        </Grid>
+        
         <Grid item xs={12}><TextField style={{width:'100%'}} label="Name" {...register("name", { required: true })} /></Grid>
         <Grid item xs={12}><TextField style={{width:'100%'}} label="Address" {...register("address", { required: true })} /></Grid>
         <Grid item xs={12}><TextField style={{width:'100%'}} label="Mobile" {...register("mobile", { required: true })} /></Grid>
@@ -27,7 +38,7 @@ function AddressForm(props) {
         <Grid item xs={12}><TextField style={{width:'100%'}} label="Locality" {...register("locality", { required: true })} /></Grid>
         <Grid item xs={12}><TextField style={{width:'100%'}} label="District" {...register("district", { required: true })} /></Grid>
         <Grid item xs={12}>
-          <Button startIcon={<AiTwotoneSave />} type='submit' variant="contained" color="primary">
+          <Button disableElevation style={{float:'right'}} startIcon={<AiTwotoneSave />} type='submit' variant="contained" color="secondary">
             Save
           </Button>
         </Grid>

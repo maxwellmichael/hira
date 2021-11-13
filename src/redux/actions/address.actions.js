@@ -1,56 +1,43 @@
-import {firebase} from '../../firebase/config';
-import {auth} from '../../firebase/authServices';
+import { getAllAddressFromFireStore, removeAddressFromFirestore, updateAddressOnFirestore, addAddressToFirestore } from '../../services/address';
+import { toast } from 'react-toastify';
+
 
 export const ADD_ADDRESS_TO_FIRESTORE = (data) => async (dispatch) => {
-    
-    const firestore = firebase.firestore();
-    const address = firestore.collection('address')
-    address.add(data)
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-        dispatch(CLEAR_ADDRESS())
-        dispatch(GET_ADDRESS(auth.currentUser.uid))
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
+    const response = await addAddressToFirestore(data);
+    if (response.hasError) {
+        console.log(response.error);
+        return toast.error(`An Error Occured Please Try again Later`);
+    }
+    return dispatch(ADD_ADDRESS(data));
 }
 
 export const REMOVE_ADDRESS_FROM_FIRESTORE = (id) => async (dispatch) => {
+    const response = await removeAddressFromFirestore(id);
+    if (response.hasError) {
+        console.log(response.error);
+        return toast.error(`An Error Occured Please Try again Later`);
+    }
+    return dispatch(REMOVE_ADDRESS(id));
     
-    const firestore = firebase.firestore();
-    firestore.collection('address').doc(id).delete()
-    .then(() => {
-        console.log('Address Deleted')
-        dispatch(CLEAR_ADDRESS())
-        dispatch(GET_ADDRESS(auth.currentUser.uid))
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
 }
 
 export const UPDATE_ADDRESS_ON_FIRESTORE = (id, data) => async (dispatch) => {
-    console.log(data)
-    const firestore = firebase.firestore();
-    firestore.collection('address').doc(id).update(data);
-    dispatch(CLEAR_ADDRESS())
-    dispatch(GET_ADDRESS(auth.currentUser.uid))
+    const response = await updateAddressOnFirestore(id, data);
+    if (response && response.hasError) {
+        console.log(response.error);
+        return toast.error(`An Error Occured Please Try again Later`);
+    }
+    return dispatch(UPDATE_ADDRESS(id, data));
 }
 
-export const GET_ADDRESS = (uid) => async (dispatch) => {
+export const GET_ADDRESS = () => async (dispatch) => {
     
-    const firestore = firebase.firestore();
-    firestore.collection('address').where('user_id','==',uid).get()
-    .then((querySnapshot) => {
-        dispatch(CLEAR_ADDRESS())
-        querySnapshot.forEach((doc) => {
-            dispatch(ADD_ADDRESS({...doc.data(), id:doc.id}))
-        });
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
+    const response = await getAllAddressFromFireStore();
+    if (response && response.hasError) {
+        console.log(response.error);
+        return toast.error(`An Error Occured Please Try again Later`);
+    }
+    return dispatch(SET_ADDRESSES(response.data));
     
 }
 
@@ -58,7 +45,35 @@ export const ADD_ADDRESS = (address) => {
     return {
       type: "ADD_ADDRESS",
       payload:{
-          address: address,
+          address,
+      }
+    }
+}
+
+export const UPDATE_ADDRESS = (id, data) => {
+    return {
+      type: "UPDATE_ADDRESS",
+      payload:{
+          id,
+          data,
+      }
+    }
+}
+
+export const SET_ADDRESSES = (addresses) => {
+    return {
+      type: "SET_ADDRESSES",
+      payload:{
+          addresses: addresses,
+      }
+    }
+}
+
+export const REMOVE_ADDRESS = (id) => {
+    return {
+      type: "REMOVE_ADDRESS",
+      payload:{
+          id: id,
       }
     }
 }

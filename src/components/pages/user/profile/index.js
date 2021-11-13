@@ -3,27 +3,23 @@ import { Grid, ButtonGroup, Button } from '@material-ui/core';
 import {FaUserAlt} from 'react-icons/fa';
 //import { useFirestoreConnect } from "react-redux-firebase";
 //import {useSelector} from 'react-redux';
-import {SHOW_MODAL} from '../../../redux/actions/modal.actions';
-import {GET_ADDRESS, REMOVE_ADDRESS_FROM_FIRESTORE} from '../../../redux/actions/address.actions';
-import {LOGOUT} from '../../../redux/actions/user.actions';
+import {SHOW_MODAL} from '../../../../redux/actions/modal.actions';
+import {GET_ADDRESS, REMOVE_ADDRESS_FROM_FIRESTORE} from '../../../../redux/actions/address.actions';
+import {LOGOUT} from '../../../../redux/actions/user.actions';
 import {useEffect} from 'react';
-import {ReactComponent as DefaultUserLogo} from '../../../images/icons/default_user.svg';
+import {ReactComponent as DefaultUserLogo} from '../../../../images/icons/default_user.svg';
 import {RiDeleteBin5Line, RiEditLine} from 'react-icons/ri';
+import { GET_ORDERS_FROM_FIRESTORE } from '../../../../redux/actions/orders.actions';
 
-const Profile = ({dispatch, user, address})=>{
+const Profile = ({dispatch, user, address, orders})=>{
 
     useEffect(()=>{
         if(user){
-            dispatch(GET_ADDRESS(user.uid));
+            dispatch(GET_ADDRESS());
+            dispatch(GET_ORDERS_FROM_FIRESTORE());
         }
     },[user, dispatch])
 
-    console.log(address)
-    // useFirestoreConnect({
-    //     collection: `users`,
-    // });
-    // const address = useSelector((state)=>state.firestore.data.address)
-    // console.log('address', address)
 
     return(
         <div className='profile-main' style={{overflow:'hidden'}}>
@@ -38,7 +34,7 @@ const Profile = ({dispatch, user, address})=>{
                     </div>
                     <div className='profile-stats'>
                         <div className='stat-item'>
-                            <div className='value'>12</div>
+                            <div className='value'>{orders ? orders.length:0}</div>
                             <p>Orders</p>
                         </div>
                         <div className='stat-item'>
@@ -96,6 +92,7 @@ const mapStateToProps = (state)=>{
     return({
         user: state.user,
         address: state.address,
+        orders: state.orders,
     })
 }
 
