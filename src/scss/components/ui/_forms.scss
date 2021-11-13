@@ -1,19 +1,68 @@
-.form-main{
-    width: 40%;
-    height: auto;
-    margin: 100px auto auto auto;
-    display: block;
+.form-main {
+    max-width: 443px;
     padding: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 12px;
-
-    .title{
-        font-size: 40px;
-        font-weight: 500;
+    display: block;
+    margin: 0 auto;
+    .title {
+        font-family: "prompt";
+        font-size: 3.75rem;
+        line-height: 95%;
+        font-weight: bold;
+        text-transform: uppercase;
         margin-bottom: 24px;
         user-select: none;
         line-height: 1.42857143;
-        color: #424553;
+        color: black;
+    }
+
+    .form-button1 {
+        width: 100%;
+        border-radius: 0;
+        -webkit-appearance: none;
+        background-color: #000;
+        color: #fff;
+        font-family: "prompt";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        border: 1px solid #000;
+        transition: background-color 450ms ease, color 450ms ease;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        padding: 0.9375rem 1.5rem;
+
+        &:hover {
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+        }
+    }
+
+    .form-button2 {
+        width: 100%;
+        border-radius: 0;
+        -webkit-appearance: none;
+        background-color: #fff;
+        color: #000;
+        font-family: "prompt";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        border: 1px solid #000;
+        transition: background-color 450ms ease, color 450ms ease;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        padding: 0.9375rem 1.5rem;
     }
 
 
@@ -21,6 +70,4 @@
         width: 95%;
         padding: 10px;
     }
-
-    
 }

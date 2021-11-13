@@ -9,6 +9,7 @@ import ClothingPage from '../components/pages/products';
 import ProductDetailsView from '../components/pages/products/sections/clothing/productDetails';
 import RouteWithSubRoutes from './routesWithSubRoutes';
 import PrivateRoute from './privateRoute';
+import ForgotPassword from '../components/pages/user/forgotpassword';
 
 
 const Routes = ()=>{
@@ -32,6 +33,10 @@ const Routes = ()=>{
         {
             path: '/user/register',
             component: Register,
+        },
+        {
+            path: '/user/recover',
+            component: ForgotPassword,
         },
         {
             path: '/cart',
