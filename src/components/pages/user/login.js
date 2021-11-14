@@ -4,16 +4,25 @@ import { LOGIN, LOGIN_WITH_GOOGLE } from '../../../redux/actions/user.actions';
 import { connect } from 'react-redux';
 import { TextField, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { auth } from '../../../firebase/authServices';
 
 
 
-const LogIn = (props) => {
+const LogIn = ({dispatch, history}) => {
+
+  React.useEffect(()=>{
+    const unsubscribe = auth.onAuthStateChanged(async(user) => { 
+        if (user) {
+            history.push('/')
+        } 
+    });
+    return () => unsubscribe(); 
+},[history])
+
   const { handleSubmit, register, formState: { errors } } = useForm();
-
-
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    props.dispatch(LOGIN(data.email, data.password));
+    dispatch(LOGIN(data.email, data.password));
   });
 
   return (
@@ -44,7 +53,7 @@ const LogIn = (props) => {
             </button>
           </Grid>
           <Grid item xs={12}>
-            <div onClick={() => props.dispatch(LOGIN_WITH_GOOGLE())} className="google-btn">
+            <div onClick={() => dispatch(LOGIN_WITH_GOOGLE())} className="google-btn">
               <div className="google-icon-wrapper">
                 <img alt='sign in with google' className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
               </div>
@@ -57,5 +66,4 @@ const LogIn = (props) => {
   );
 };
 
-
-export default connect()(LogIn);
+export default connect()(withRouter(LogIn));

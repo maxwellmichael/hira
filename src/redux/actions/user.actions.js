@@ -4,7 +4,6 @@ import { getUserWithEmailAndPassword, getUserWithGoogle, registerUserWithEmail, 
 import { GET_CART_FROM_FIRESTORE } from "./cart.actions";
 
 export const LOGIN_SUCCESS = (user) => {
-  toast.success(`Welcome ${user.userName}`);
   return {
     type: "LOGIN_SUCCESS",
     currentUser: user,
@@ -68,7 +67,6 @@ export const LOGOUT = () => async dispatch => {
   try {
     auth.signOut().then(() => {
       dispatch(LOGOUT_SUCCESS())
-      dispatch(UPDATE_USER());
       return toast.success(`You Have been Logged Out`);
     })
   }

@@ -11,6 +11,13 @@ import RouteWithSubRoutes from './routesWithSubRoutes';
 import PrivateRoute from './privateRoute';
 import ForgotPassword from '../components/pages/user/forgotpassword';
 
+import { auth } from '../firebase/authServices';
+import { useState, useEffect } from 'react';
+import { getUserWithUID } from '../services/user';
+import { useDispatch } from 'react-redux';
+import { LOGIN_SUCCESS } from '../redux/actions/user.actions';
+import { GET_CART_FROM_FIRESTORE } from '../redux/actions/cart.actions';
+import { GET_CATEGORIES_FROM_FIRESTORE } from '../redux/actions/product.actions';
 
 const Routes = ()=>{
 
@@ -38,10 +45,6 @@ const Routes = ()=>{
             path: '/user/recover',
             component: ForgotPassword,
         },
-        {
-            path: '/cart',
-            component: CartPage,
-        },
         
     ]
 
@@ -60,8 +63,35 @@ const Routes = ()=>{
         {
             path: '/user/profile',
             component: Profile,
-        }
+        },
+        {
+            path: '/cart',
+            component: CartPage,
+        },
     ]
+
+    const dispatch = useDispatch();
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{
+        const unsubscribe = auth.onAuthStateChanged(async(user) => { 
+            if (user) {
+                const response = await getUserWithUID(user.uid);
+                if(response.hasError){
+                    console.log(response.error)
+                }
+                dispatch(LOGIN_SUCCESS(response.data));
+                dispatch(GET_CART_FROM_FIRESTORE());
+                dispatch(GET_CATEGORIES_FROM_FIRESTORE())
+            } 
+            else {
+                console.log('Not Logged In')
+            }
+            setLoading(false);
+        });
+        return () => unsubscribe(); 
+    },[dispatch])
 
    
     return(
@@ -70,7 +100,7 @@ const Routes = ()=>{
             {/* {productRoutes.map((route,i)=><RouteWithSubRoutes exact={true} key={i} {...route} />)} */}
             {productRoutes.map((route,i)=><RouteWithSubRoutes exact={true} key={i} {...route} />)}
             {userRoutes.map((route,i)=><Route key={i} component={route.component} path={route.path} exact={true} />)}
-            {privateRoutes.map((route,i)=><PrivateRoute exact={true} key={i} {...route} />)}
+            {!loading && privateRoutes.map((route,i)=><PrivateRoute exact={true} key={i} {...route} />)}
         </Switch>
     )
 }

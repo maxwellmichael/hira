@@ -4,7 +4,6 @@ import { Grid } from '@material-ui/core';
 import Account from './sections/account';
 import Address from './sections/address';
 
-
 const Profile = () => {
 
     return (

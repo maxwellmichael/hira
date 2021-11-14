@@ -18,6 +18,9 @@ import { IoMdLogOut, IoMdLogIn } from 'react-icons/io';
 import { BiUser } from 'react-icons/bi';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import { CLEAR_CART } from '../../../redux/actions/cart.actions';
+import { CLEAR_ADDRESS } from '../../../redux/actions/address.actions';
+import { CLEAR_ORDERS } from '../../../redux/actions/orders.actions';
 
 const NavBar = (props) => {
 
@@ -35,6 +38,14 @@ const NavBar = (props) => {
   const handleAccountMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = ()=>{
+    props.dispatch(LOGOUT())
+    props.dispatch(CLEAR_CART())
+    props.dispatch(CLEAR_ADDRESS())
+    props.dispatch(CLEAR_ORDERS())
+    history.push('/user/login');
+  }
 
 
 
@@ -64,7 +75,7 @@ const NavBar = (props) => {
         </Grid>
       </MenuItem>}
 
-      {props.user && <MenuItem onClick={() => props.dispatch(LOGOUT())}>
+      {props.user && <MenuItem onClick={handleLogout}>
         <Grid spacing={4} container>
           <Grid item xs={6}><div className={classes.link}>Logout</div></Grid>
           <Grid item xs={6}><IoMdLogOut className={classes.linkIcon} /></Grid>
