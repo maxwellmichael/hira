@@ -1,0 +1,78 @@
+$purple: #771f52;
+
+
+
+.address-card {
+    background: #ffffff;
+    border-radius: 20px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    max-width: 375px;
+    height: 11rem;
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    position: relative;
+    padding: 14px 0px;
+
+    .column-section{
+        display: flex;
+        flex-direction: row;
+        justify-content:left;
+    }
+
+    .overlay{
+        width: 2%;
+        height: 100%;
+        position: absolute;
+        left:0;
+        top:0;
+        z-index: 2;
+        background-color: $purple;
+        transition: width 0.5s linear;
+    }
+
+    .card-slection{
+        width: 20%;
+        height: 100%;
+        border-right: 1px solid #e1e1e1;
+        display: flex;
+        justify-content: center;
+
+        .circle{
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            background-color: $purple;
+            color: white;
+        }
+    }
+
+    .card-content{
+        padding-left: 8px;
+        text-align: left;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+
+        h6{
+            font-family: 'prompt';
+            max-lines: 1;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            
+        }
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+
+}

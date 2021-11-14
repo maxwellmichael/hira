@@ -6,6 +6,19 @@
 
     .nav-tabs {
         border: none;
+
+        .nav-link{
+            color: black;
+            font-weight: bold;
+
+            &:active{
+                color: #771f52;
+            }
+        }
+
+        .active{
+            color: #771f52;
+        }
     }
 
     .tab-content {
