@@ -30,7 +30,7 @@ $purple: #771f52;
         left:0;
         top:0;
         z-index: 2;
-        background-color: $purple;
+        background-color: black;
         transition: width 0.5s linear;
     }
 
@@ -39,13 +39,21 @@ $purple: #771f52;
         height: 100%;
         border-right: 1px solid #e1e1e1;
         display: flex;
+        flex-direction: column;
         justify-content: center;
 
         .circle{
             margin: auto;
             width: 40px;
             height: 40px;
-            background-color: $purple;
+            background-color: black;
+            color: white;
+        }
+        .circle-red{
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            background-color: #ff2400;
             color: white;
         }
     }

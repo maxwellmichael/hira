@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddressCard from './addressCard';
 import { useEffect } from 'react';
 import { GET_ADDRESS } from '../../../../../redux/actions/address.actions';
+import { SHOW_MODAL } from '../../../../../redux/actions/modal.actions';
 
 const Address = () => {
     const addresses = useSelector((state) => state.address)
@@ -19,7 +20,7 @@ const Address = () => {
     return (
         <Grid container direction='row' spacing={4}>
             <Grid item xs={12}>
-                <IconButton style={{backgroundColor:'#771f52', color:'white'}}><IoMdAdd/></IconButton>
+                <IconButton onClick={()=>dispatch(SHOW_MODAL('ADDRESS_FORM',{}))} style={{backgroundColor:'#771f52', color:'white'}}><IoMdAdd/></IconButton>
             </Grid>
             {addresses.map((address, i) => (
                 <Grid key={i} item xs={12}>

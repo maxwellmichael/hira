@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import { AiTwotoneSave } from 'react-icons/ai';
 
 function EditAddressForm(props) {
-  console.log(props.address)
   const { handleSubmit, formState: { errors }, unregister, control } = useForm({
     defaultValues: {
       name: props.address.name,
