@@ -20,7 +20,6 @@ import { GET_CART_FROM_FIRESTORE } from '../redux/actions/cart.actions';
 import { GET_CATEGORIES_FROM_FIRESTORE } from '../redux/actions/product.actions';
 
 const Routes = ()=>{
-
     const productRoutes = [
         {
             path:'/products',

@@ -26,8 +26,7 @@ const ProductCard = (props) => {
         });
     }
 
-    const redirect = (e)=>{
-        e.preventDefault();
+    const redirect = ()=>{
         history.push({pathname:'/products/details', state:props.product})
     }
 
@@ -37,6 +36,7 @@ const ProductCard = (props) => {
             <motion.div className="product-card" initial={{ y: 600, opacity: 0 }} animate={animationControl}>
                 <Grid onClick={redirect} container style={{ margin: 0, width: '100%', padding: 0 }}>
                     <div className="product-tag"><h2>SALE {Math.round(100 - (parseInt(props.product.selling_price) / parseInt(props.product.maximum_retail_price) * 100))}% OFF</h2></div>
+                    
                     <Grid xs={12} item style={{ margin: 0, width: '100%', padding: 0 }}>
                         <div style={{ backgroundImage: `url(${props.product.main_image.src})` }} className='product-card-image'>
                         </div>

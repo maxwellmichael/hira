@@ -24,7 +24,6 @@
     "react-firebase": "^2.2.8",
     "react-hook-form": "^7.12.2",
     "react-icons": "^4.2.0",
-    "react-image-gallery": "^1.2.7",
     "react-intersection-observer": "^8.32.0",
     "react-redux": "^7.2.4",
     "react-redux-firebase": "^3.10.0",

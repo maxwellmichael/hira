@@ -1,6 +1,6 @@
 $white: #fff;
 $google-blue: #4285f4;
-$button-active-blue: #1669F2;
+$button-active-blue: #1669f2;
 
 .google-btn {
   width: 100%;
@@ -40,5 +40,33 @@ $button-active-blue: #1669F2;
   }
   &:active {
     background: $button-active-blue;
+  }
+}
+
+.primary-button {
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+  background-color: #000;
+  color: #fff;
+  font-family: "prompt";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid #000;
+  transition: background-color 450ms ease, color 450ms ease;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.9375rem 1.5rem;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
   }
 }

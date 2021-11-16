@@ -1,0 +1,186 @@
+.product-slider {
+    .thumbnail-container {
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: scroll;
+        // hides Scroll bar
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        // Chrome
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media screen and (max-width: 900px) {
+            max-height: 50vh;
+        }
+
+        .thumbnail {
+            height: 159px;
+            width: 97px;
+            margin: auto;
+            margin-bottom: 8px;
+            padding: 1px;
+            transition: border 0.3s linear;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                aspect-ratio: auto 99 / 160;
+                cursor: pointer;
+            }
+
+            &:hover {
+                border: 1px solid black;
+                padding: 0;
+            }
+            &:active {
+                border: 1px solid black;
+                padding: 0;
+            }
+        }
+    }
+
+    .image-display {
+        max-width: 368px;
+        height: 100%;
+        margin: auto;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-sizing: border-box;
+            aspect-ratio: auto 99 / 160;
+            cursor: zoom-in;
+            cursor: -moz-zoom-in;
+            cursor: -webkit-zoom-in;
+            transition: 0.5s all ease-in-out;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+        @media screen and (max-width: 900px) {
+            max-width: 100%;
+            width: 100vw;
+            margin:0;
+            padding:0;
+            img{
+                object-fit:contain;
+            }
+        }
+    }
+}
+
+.product-content {
+    font-family: "Work Sans", sans-serif;
+    padding-left: 20px;
+    @media screen and (max-width: 900px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .title {
+        text-align: left;
+        font-family: "Prompt", sans-serif;
+        font-size: 2.5rem;
+        line-height: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.875rem;
+        text-transform: uppercase;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media screen and (max-width: 900px) {
+            font-size: 1.3rem;
+            line-height: 1.5rem;
+        }
+    }
+
+    .title-medium {
+        text-align: left;
+        font-size: 1.8rem;
+        line-height: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.875rem;
+        text-transform: uppercase;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .title-small {
+        text-align: left;
+        font-size: 1.2rem;
+        line-height: 1.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .rating-container {
+        text-align: left;
+        margin-right: 4px;
+        margin-top: 0.625rem;
+        display: flex;
+        align-content: space-between;
+
+        .review {
+            padding-left: 10px;
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.4;
+            font-weight: 400;
+            font-family: "JetBrains Mono", monospace;
+        }
+    }
+
+    .size-chart {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow-x: scroll;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        // Chrome
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .size-chart-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            .size-chart-image {
+                width: 80px;
+                height: 60px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                margin: 0 0.5rem 0.5rem 0;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .size-chart-size {
+                cursor: pointer;
+                border: 0px 1px 1px 1px solid black;
+                width: 80px;
+                height: 80px;
+                margin: 0 0.5rem 0.5rem 0;
+                text-align: center;
+                font-size: 1.5rem;
+                line-height: 1;
+                font-weight: 600;
+                font-family: "JetBrains Mono", monospace;
+            }
+        }
+    }
+}

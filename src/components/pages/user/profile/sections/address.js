@@ -20,7 +20,7 @@ const Address = () => {
     return (
         <Grid container direction='row' spacing={4}>
             <Grid item xs={12}>
-                <IconButton onClick={()=>dispatch(SHOW_MODAL('ADDRESS_FORM',{}))} style={{backgroundColor:'#771f52', color:'white'}}><IoMdAdd/></IconButton>
+                <IconButton onClick={()=>dispatch(SHOW_MODAL('ADDRESS_FORM',{}))} style={{backgroundColor:'black', color:'white'}}><IoMdAdd/></IconButton>
             </Grid>
             {addresses.map((address, i) => (
                 <Grid key={i} item xs={12}>

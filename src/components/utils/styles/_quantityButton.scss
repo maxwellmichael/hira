@@ -1,0 +1,31 @@
+.quantity-button {
+    width: 200px;
+    border: 1px solid #c4c4c4;
+    display: flex;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+
+    .icon-button {
+        color: black;
+    }
+
+    .value {
+        height: 1em;
+        width: 1em;
+        margin: auto;
+        font-family: "Work Sans", sans-serif;
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 1.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 900px) {
+        margin:auto;
+        width: 100%;
+    }
+}
