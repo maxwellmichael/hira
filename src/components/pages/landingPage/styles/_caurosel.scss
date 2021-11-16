@@ -1,13 +1,15 @@
 .caurosel-main{
-    width: 100%;
+    width: 100vw;
     height: 480px;
-    margin: 0px 0px 60px 0px;
+    position: relative;
+    margin: 0 0 4rem 0;
 
     .caurosel-image-slider{
         position: relative;
-        width: auto;
-        height: 95%;
+        width: 100%;
+        height: 100%;
         overflow: hidden;
+        padding:0;
 
         .caurosel-image{
             width: 100%;
@@ -20,37 +22,18 @@
 
     .caurosel-nav-buttons{
         position: relative;
-        width: 200px;
-        height: auto;
-        margin: -90px auto;
-        padding: 0;
+        margin: auto;
+        max-width: 200px;
+        display: flex;
+        flex-direction: row;
+        align-items: space-between;
 
-        button{
-            width: 20px;
-            background: transparent;
-            border:0;
-            padding: 0;
-            height: 20px;
-            margin: 0;
-
-            svg{
-                color:rgb(239, 239, 239);
-
-                &:hover{
-                    color:rgb(59, 59, 59);
-                }
-
-                &:active{
-                    color:rgb(118, 118, 118);
-                }
-            }
-        }
     }
 
     @media screen and(max-width:900px) {
         .caurosel-image-slider{
             .caurosel-image{
-                background-size: contain;
+                
             }
         }
         

@@ -1,5 +1,4 @@
 import { Grid, IconButton } from "@material-ui/core";
-import { useMediaQuery } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -9,12 +8,11 @@ import { SET_FILTERS, REMOVE_ALL_FILTERS } from "../../../../redux/actions/filte
 import { GET_PRODUCTS_BY_FILTERS_FROM_FIRESTORE } from "../../../../redux/actions/product.actions";
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import { BiRefresh } from 'react-icons/bi';
-import { pink } from '@material-ui/core/colors';
 
 
 const FilterCheckBox = ({ newFilters, dispatch, selectedFilters }) => {
 
-    const isMobile = useMediaQuery('(min-width:600px)');
+    const [dropdown, setDropdown] = useState(false);
     let filters = newFilters;
     const initialState = filters.map((filter) => {
         return { name: filter.name, types: [] }
@@ -27,10 +25,9 @@ const FilterCheckBox = ({ newFilters, dispatch, selectedFilters }) => {
 
     }, [dispatch, initialState, selectedFilters, newFilters])
 
-    const [dropdown, setDropdown] = useState(isMobile ? false : true);
+    
 
     const handleFilterChange = (filter) => {
-        console.log(filter)
         const filterIndex = selectedFilters.findIndex(e => e.name === filter.name);
         const types = selectedFilters[filterIndex].types;
         const typeIndex = types.indexOf(filter.type);
@@ -69,13 +66,13 @@ const FilterCheckBox = ({ newFilters, dispatch, selectedFilters }) => {
                     <h1 className='title'>FILTERS</h1>
                 </Grid>
                 <Grid item xs={6}>
-                    <IconButton color='secondary' className='button' size='small' onClick={() => setDropdown(!dropdown)}>{dropdown ? <AiFillCaretUp /> : <AiFillCaretDown />}</IconButton>
+                    <IconButton style={{color:'black'}} className='button' size='small' onClick={() => setDropdown(!dropdown)}>{dropdown ? <AiFillCaretUp /> : <AiFillCaretDown />}</IconButton>
                 </Grid>
             </Grid>
 
             <Grid className='dropdown-content' container spacing={3} style={{ display: dropdown ? 'block' : 'none', }}>
                 <Grid item xs={12}>
-                    <IconButton color='secondary' size='medium' onClick={() => dispatch(REMOVE_ALL_FILTERS())}>
+                    <IconButton style={{color:'black'}} size='medium' onClick={() => dispatch(REMOVE_ALL_FILTERS())}>
                         <BiRefresh />
                     </IconButton>
                     {/* <Button onClick={() => dispatch(REMOVE_ALL_FILTERS())} variant='text' style={{ color: '#ff3f6c' }}>CLEAR ALL</Button> */}
@@ -102,9 +99,9 @@ const FilterCheckBox = ({ newFilters, dispatch, selectedFilters }) => {
                                                         value={type.name}
                                                         name={type.name}
                                                         sx={{
-                                                            color: pink[600],
+                                                            color: 'black',
                                                             '&.Mui-checked': {
-                                                                color: pink[600],
+                                                                color: 'black',
                                                             },
                                                         }}
                                                         size='small'

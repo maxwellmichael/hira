@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
 import { Grid } from '@material-ui/core';
 import ProductCard from './sections/clothing/productCard';
-//import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { GET_PRODUCTS_BY_FILTERS_FROM_FIRESTORE, GET_CATEGORIES_FROM_FIRESTORE, GET_MATERIALS_FROM_FIRESTORE } from '../../../redux/actions/product.actions';
@@ -43,13 +41,14 @@ const ClothingPage = ({ dispatch, products, categories, materials, selectedFilte
             <Grid container style={{ margin: 0, overflow: 'hidden', }}>
 
                 <Grid container spacing={3}>
+                    <Grid item xs={12}><div style={{paddingTop:'1rem'}} className='headline2'>WOMEN</div></Grid>
                     <Grid item xs={12} md={3}>
                         <motion.div transition={{duration:0.8}} initial={{x:-400}} animate={{x:0 }}>
                             <FilterCheckBox newFilters={filters} />
                         </motion.div>
                     </Grid>
                     <Grid item xs={12} md={9} style={{paddingTop: 20}}>
-                        <Grid container justify='space-evenly' >
+                        <Grid container alignItems='center' spacing={0} >
                             {products.map((product, i) => {
                                 if (product instanceof Array || product === null) {
                                     return null;

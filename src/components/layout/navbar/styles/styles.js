@@ -51,16 +51,18 @@ const navbarStyle = makeStyles((theme) => {
     },
 
     link: {
-      fontFamily: 'prompt',
+      fontFamily: 'Prompt',
       fontSize: '14px',
       fontWeight: 400,
       letterSpacing: '0.12em',
       textAlign: 'left',
       color: '#101010',
-      transition: '0.6s easeinout',
+      transition: 'border 0.6s easeinout',
+      paddingBottom: 1,
       '&:hover': {
         textDecoration: 'none',
-        color: theme.palette.info,
+        color: 'black',
+        borderBottom: '1px solid black',
       }
     },
     linkIcon: {
@@ -103,14 +105,15 @@ const navbarStyle = makeStyles((theme) => {
     },
     search: {
       position: 'relative',
-      borderRadius: theme.shape.borderRadius,
+      borderRadius: 16,
       border: '1px solid #e1e1e1',
-      backgroundColor: theme.palette.common.white,
+      backgroundColor: 'rgb(242, 242, 242)',
       marginRight: theme.spacing(2),
       marginLeft: 0,
       width: 300,
+      transition: 'border 0.6s linear',
       '&:hover': {
-        backgroundColor: theme.palette.common.white,
+        border: '1px solid black',
       },
     },
     searchIcon: {

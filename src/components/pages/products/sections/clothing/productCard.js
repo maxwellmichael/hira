@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 // import { ADD_PRODUCT_TO_FIRESTORE_CART } from '../../../../../redux/actions/cart.actions';
 // import { IoMdAdd } from 'react-icons/io';
 import { useHistory } from 'react-router-dom';
+import StarRatingDisplay from '../../../../utils/starRatingDisplay';
 
 
 const ProductCard = (props) => {
@@ -32,7 +33,7 @@ const ProductCard = (props) => {
 
 
     return (
-        <div ref={ref}>
+        <Grid item xs={12} md={4} lg={3} ref={ref}>
             <motion.div className="product-card" initial={{ y: 600, opacity: 0 }} animate={animationControl}>
                 <Grid onClick={redirect} container style={{ margin: 0, width: '100%', padding: 0 }}>
                     <div className="product-tag"><h2>SALE {Math.round(100 - (parseInt(props.product.selling_price) / parseInt(props.product.maximum_retail_price) * 100))}% OFF</h2></div>
@@ -45,18 +46,16 @@ const ProductCard = (props) => {
                     <Grid xs={12} item style={{ margin: 0, width: '100%', padding: 0 }}>
                         <div className="product-card-content-container">
                             <div className="product-card-content-primary">
-
                                 <Grid container spacing={3}>
-
                                     <Grid item xs={12}>
-                                        {/* <IconButton onClick={() => props.dispatch(ADD_PRODUCT_TO_FIRESTORE_CART(props.product))} variant="contained" color="secondary">
-                                            <IoMdAdd />
-                                        </IconButton> */}
-                                        <div className="product-card-product-primary" style={{ color: '#1f1f21' }}>
+                                        <div className="product-card-product-primary">
                                             {props.product.name}
                                         </div>
-                                        <div style={{ textAlign: 'center' }} className="product-card-product-primary">
-                                            ₹{props.product.selling_price} <strike style={{ color: '#1f1f21' }}>₹{props.product.maximum_retail_price}</strike>
+                                        <div className="product-card-product-primary">
+                                           - ₹{props.product.selling_price} <strike>₹{props.product.maximum_retail_price}</strike>
+                                        </div>
+                                        <div className="product-card-product-rating">
+                                            <StarRatingDisplay rating={4} /><span className='review'>1665 Reviews</span>
                                         </div>
                                     </Grid>
 
@@ -71,7 +70,7 @@ const ProductCard = (props) => {
 
 
             </motion.div>
-        </div>
+        </Grid>
     )
 }
 

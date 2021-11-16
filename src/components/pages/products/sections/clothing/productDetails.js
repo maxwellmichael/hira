@@ -44,7 +44,7 @@ const ProductDetailsView = (props) => {
 
 
     return (
-        <Grid style={{ margin: '1rem 0 0 0' }} container className="product-slider">
+        <Grid style={{ margin: 0 }} container className="product-slider">
             <Grid item md={6} xs={12}>
                 <Grid style={{ margin: 0 }} container>
                     {!isMobile && (<Grid item md={4}>
@@ -73,11 +73,11 @@ const ProductDetailsView = (props) => {
                             <StarRatingDisplay rating={4} /><span className='review'>1665 Reviews</span>
                         </div>
                     </Grid>
-                    <Grid style={{ marginTop: '1rem' }} className='size-chart' container >
-                        <Grid style={{ marginBottom: '0.4rem' }} item xs={12}>
-                            <h1 className='title-small'>ITEMS
-                            </h1>
-                        </Grid>
+                    <Grid style={{ marginTop: '1rem' }} item xs={12}>
+                        <h1 className='title-small'>ITEMS
+                        </h1>
+                    </Grid>
+                    <Grid style={{ marginBottom: '0.4rem' }} className='size-chart' container >
                         <Grid container>
                             <div className='size-chart-container'>
                                 {sizeChart.map((item, i) => <div onClick={() => handleClick(i)} style={{ backgroundImage: `url(${item.url})` }} key={i} className='size-chart-image'></div>)}
@@ -93,8 +93,7 @@ const ProductDetailsView = (props) => {
                     </Grid>
                     <Grid className='size-chart' container >
                         <Grid style={{ marginBottom: '0.4rem' }} item xs={12}>
-                            <h1 className='title-small'>QTY
-                            </h1>
+                            <h1 className='title-small'>QTY</h1>
                         </Grid>
                         <Grid style={{ marginBottom: '0.5rem' }} container>
                             <QuantityButton handleAdd={handleAdd} handleSub={handleSub} quantity={quantity} />

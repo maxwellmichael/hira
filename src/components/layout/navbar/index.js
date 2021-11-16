@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion'
 import { IconButton, Toolbar } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
-import { AccountCircle, ShoppingCart } from '@material-ui/icons';
+import {GiShoppingBag} from 'react-icons/gi';
+import {BsPersonFill} from 'react-icons/bs'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ReactComponent as AppLogo } from '../../../images/icons/logo.svg';
 import { Badge } from '@material-ui/core';
@@ -151,7 +152,7 @@ const NavBar = (props) => {
 
             <Grid item xs={3} md={8} className={classes.navbarSection2}>
               {!mobile && (
-                <IconButton onClick={() => setDrawer(true)} edge='start' className={classes.iconButton} aria-label="menu">
+                <IconButton disableFocusRipple disableRipple disableTouchRipple onClick={() => setDrawer(true)} edge='start' className={classes.iconButton} aria-label="menu">
                   <MenuIcon />
                 </IconButton>)}
               {mobile && links.map((link, i) => (
@@ -180,12 +181,12 @@ const NavBar = (props) => {
             </Grid>
 
             <Grid item xs={3} md={1} className={classes.navbarSection3}>
-              <IconButton onClick={handleAccountMenuOpen} edge='end' className={classes.iconButton} aria-label="account" aria-haspopup="true" aria-controls='account-menu'>
-                {props.user && props.user.profilePhoto ? <img alt='Profile' className={classes.navProfilePhoto} src={props.user.profilePhoto} /> : <AccountCircle />}
+              <IconButton disableFocusRipple disableRipple disableTouchRipple onClick={handleAccountMenuOpen} edge='end' className={classes.iconButton} aria-label="account" aria-haspopup="true" aria-controls='account-menu'>
+                {props.user && props.user.profilePhoto ? <img alt='Profile' className={classes.navProfilePhoto} src={props.user.profilePhoto} /> : <BsPersonFill />}
               </IconButton>
-              <IconButton onClick={() => history.push('/cart')} edge='end' className={classes.iconButton} aria-label="cart">
-                <Badge badgeContent={props.cart ? props.cart.length : 0} color='secondary'>
-                  <ShoppingCart />
+              <IconButton disableFocusRipple disableRipple disableTouchRipple onClick={() => history.push('/cart')} edge='end' className={classes.iconButton} aria-label="cart">
+                <Badge badgeContent={props.cart ? props.cart.length : 0} color='error' >
+                  <GiShoppingBag style={{color:'black'}} />
                 </Badge>
               </IconButton>
             </Grid>
