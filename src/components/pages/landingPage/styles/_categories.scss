@@ -1,34 +1,31 @@
-
-
-.landing-page-categories-title{
-    margin:0;
+.landing-page-categories-title {
+    margin: 0;
     padding: 12px;
 
-    h4{
-        font-family: 'Prompt', sans-serif;
+    h4 {
+        font-family: "Prompt", sans-serif;
         position: relative;
         text-align: center;
         text-transform: uppercase;
         color: #3e4152;
-        letter-spacing: .15em;
+        letter-spacing: 0.15em;
         font-size: 1.8em;
         padding: 50px auto 0px auto;
         max-height: 5em;
         font-weight: 500;
-        
     }
 }
 
-.landing-page-categories-item{
+.landing-page-categories-item {
     height: 250px;
     width: auto;
 
-    .image{
+    .image {
         width: 100%;
         height: 100%;
     }
 
-    .title{
+    .title {
         font-size: 30px;
         color: #333;
         line-height: 20px;
@@ -41,28 +38,52 @@
     }
 }
 
-.landingpage-categories-card{
-    overflow:hidden;
+.cards-section {
+    box-sizing: border-box;
     width: 100%;
-    height: auto;
-
-    .image{
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 200px;
-        width:auto;
+    height: 400px;
+    padding:0px 20px 0px 20px;
+    overflow-x: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    // Chrome
+    &::-webkit-scrollbar {
+        display: none;
     }
 
-    .name{
-        font-family: 'Prompt';
-        font-size: 20px;
-        color: #333;
-        text-align: center;
-        line-height: 20px;
-        margin: 12px auto auto auto;
-        font-weight: 700;
-        align-items: center;
-    }
+    .cards-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
 
+        .scard {
+            position: relative;
+            width: 400px;
+            height: 150px;
+            cursor: pointer;
+
+            img {
+                object-fit: contain;
+                height: 100%;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .name {
+                position: absolute;
+                z-index: 2;
+                font-family: "Prompt";
+                font-size: 20px;
+                color: #333;
+                text-align: center;
+                line-height: 20px;
+                margin: 12px auto auto auto;
+                font-weight: 700;
+                align-items: center;
+            }
+        }
+    }
 }

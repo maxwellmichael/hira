@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { GET_PRODUCTS_BY_FILTERS_FROM_FIRESTORE, GET_CATEGORIES_FROM_FIRESTORE, GET_MATERIALS_FROM_FIRESTORE } from '../../../redux/actions/product.actions';
 import FilterCheckBox from './utils/filterCheckBox';
+import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 
 
 const ClothingPage = ({ dispatch, products, categories, materials, selectedFilters }) => {
@@ -33,21 +34,17 @@ const ClothingPage = ({ dispatch, products, categories, materials, selectedFilte
 
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ ease: 'easeInOut', duration: 0.6, delay: 0.5 }}
-            exit={{ x: '-100vw', opacity: 0, transition: { ease: 'easeInOut', duration: 0.6 } }}>
+        <motion.div variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
             <Grid container style={{ margin: 0, overflow: 'hidden', }}>
 
                 <Grid container spacing={3}>
-                    <Grid item xs={12}><div style={{paddingTop:'1rem'}} className='headline2'>WOMEN</div></Grid>
+                    <Grid item xs={12}><div style={{ paddingTop: '1rem' }} className='headline2'>WOMEN</div></Grid>
                     <Grid item xs={12} md={3}>
-                        <motion.div transition={{duration:0.8}} initial={{x:-400}} animate={{x:0 }}>
+                        <motion.div transition={{ duration: 0.8 }} initial={{ x: -400 }} animate={{ x: 0 }}>
                             <FilterCheckBox newFilters={filters} />
                         </motion.div>
                     </Grid>
-                    <Grid item xs={12} md={9} style={{paddingTop: 20}}>
+                    <Grid item xs={12} md={9} style={{ paddingTop: 20 }}>
                         <Grid container alignItems='center' spacing={0} >
                             {products.map((product, i) => {
                                 if (product instanceof Array || product === null) {

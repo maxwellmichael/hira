@@ -1,34 +1,65 @@
-import { motion } from 'framer-motion';
-import Caurosel from './sections/caurosel';
-import Categories from './sections/categories';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Grid } from '@material-ui/core';
 import { useMediaQuery } from '@material-ui/core';
 import MobileBanner from '../../../images/banners/dress-banner-mobile.jpg';
 import DesktopBanner from '../../../images/banners/dress-banner-desktop.jpg';
+import Banner1 from '../../../images/banners/landing_page_banner.jpg';
+import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
+import { ImagesRevealAnimation } from '../../utils/animations/imagesRevealAnimation';
+
+import AnimationVideo from '../../../images/banners/landing-page-video.mp4'
+import AnimationImage1 from '../../../images/banners/animation-image-1.jpg';
+import AnimationImage2 from '../../../images/banners/animation-image-2.jpg';
+import AnimationImage3 from '../../../images/banners/animation-image-3.jpg';
+import AnimationImage4 from '../../../images/banners/animation-image-4.jpg';
+
+
 
 const LandingPage = () => {
 
     const isMobile = useMediaQuery('(max-width:900px)');
-
     return (
-        <motion.div style={{ backgroundColor: '#fff' }} transition={{ duration: 0.8 }} initial={{ y: 300, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-            <Grid style={{ margin: 0 }} className='landing-page' container>
-                <Caurosel />
+        <motion.div key='landing-page' style={{ backgroundColor: '#fff' }} variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
+            <Grid style={{ margin: 0, padding: 0 }} className='landing-page' container>
                 <Grid item xs={12}>
-                    <div className="main-title headline5">Online Wholesale Clothing</div>
-                </Grid>
-                <Categories />
-                <Grid style={{ margin: 0 }} container>
-                    <div className='section-1'>
-                        <div style={{ backgroundImage: `url(${isMobile ? MobileBanner : DesktopBanner})` }} className='image-layer'></div>
-                        <div className='overlay'></div>
-                        <div className='content-container'>
-                            <div className='content headline5'>UP TO 60% OFF</div>
-                            <button className='transparent-button'>SHOP NOW</button>
+                    <div className='landing-banner'>
+                        <img alt='Main Banner' src={Banner1} />
+                        <div className='center-alignment'>
+                            <div style={{ top: '30%' }} className='title headline2'>Women's Collection</div>
                         </div>
 
                     </div>
                 </Grid>
+
+
+                <Grid style={{margin:'4rem 0 4rem 0'}} item xs={12}>
+                   
+                    <motion.div className='title headline1'>Best Of Designs</motion.div>
+                   
+                    <AnimatePresence>
+                        <ImagesRevealAnimation
+                            key='animation1'
+                            mainImage={AnimationVideo}
+                            image1={AnimationImage1}
+                            image2={AnimationImage2}
+                            image3={AnimationImage3}
+                            image4={AnimationImage4}
+                        />
+                    </AnimatePresence>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <div className='fixed-banner'>
+                        <div style={{ backgroundImage: `url(${isMobile ? MobileBanner : DesktopBanner})` }} className='image-layer'></div>
+                        <div className='overlay'></div>
+                        <div className='content-container'>
+                            <div className='title headline3'>UP TO 60% OFF</div>
+                            <button className='transparent-button'>SHOP NOW</button>
+                        </div>
+                    </div>
+                </Grid>
+
+
             </Grid>
         </motion.div>
     )

@@ -38,9 +38,9 @@ const Card = (props)=>{
     }
    
     return(
-        <Grid style={{margin:0, boxShadow:'0px -1px rgba(0, 0, 0, 0.2)'}} container spacing={3}>
+        <Grid style={{margin:0, boxShadow:'0px -1px rgba(0, 0, 0, 0.2)'}} container>
             <Grid item xs={7} md={8}>
-                <Grid container>
+                <Grid container spacing={1}>
 
                     <Grid item xs={12} md={5}>
                         <img className={classes.cardImage} src={props.set.main_image.src} alt='Product Card' />
@@ -55,7 +55,7 @@ const Card = (props)=>{
             <Grid item xs={5} md={4}>
                 <Grid container direction='column' spacing={3} alignItems='flex-start' >
                     <Grid item>
-                        <ButtonGroup disableElevation style={{border:'1px solid #771f52'}} variant="contained" color='primary'>
+                        <ButtonGroup disableElevation style={{border:'1px solid black'}} variant="contained" color='primary'>
                             <Button onClick={()=>addQuantity()}><GrAdd/></Button>
                             <Button disableRipple disableFocusRipple disableTouchRipple><div style={{color:'#771f52'}} className='subtitle1'>{props.set.quantity}</div></Button>
                             <Button onClick={()=>reduceQuantity()}><GrSubtract/></Button>

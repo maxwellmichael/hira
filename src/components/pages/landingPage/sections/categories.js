@@ -1,4 +1,4 @@
-import {Grid} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import Blouses from '../assets/categories/blouses.webp';
 import CropTops from '../assets/categories/crop-tops.webp';
 import Bottoms from '../assets/categories/bottoms.webp';
@@ -68,31 +68,26 @@ const categorieSet = [
 
 
 
-const Categories = ()=>{
+const Categories = () => {
 
-    return(
-        <Grid container spacing={3} style={{width:'100vw',margin:0,overflow:'hidden'}}>
-
-        
-            <Grid item xs={12} style={{width:'100vw',margin:0}}>
+    return (
+        <Grid container style={{ margin: 0 }}>
+            <Grid item xs={12} style={{ margin: 0 }}>
                 <div className='landing-page-categories-title'>
-                    <h4>TOP CATEGORIES</h4>
+                    <h4>WOMEN'S COLLECTION</h4>
                 </div>
             </Grid>
-            
-            <Grid container spacing={3} style={{margin:0,width:'100%'}}>
-                    {categorieSet.map((item, i)=>(
-                        <Grid className='landingpage-categories-card' key={i} item xs={6} md={4} lg={2}>
-                            <Grid container>
-                                <Grid item xs={12}>
-                                    <div style={{backgroundImage:`url(${item.image})`}} className='image'></div>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <h4 className='name'>{item.name}</h4>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    ))}
+            <Grid container>
+                <div className='cards-section' >
+                    <div className='cards-container'>
+                        {categorieSet.map((item, i) => (
+                            <div className='scard' key={i} >
+                                <img src={item.image} alt={i} />
+                                <h4 className='name'>{item.name}</h4>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </Grid>
         </Grid>
     )

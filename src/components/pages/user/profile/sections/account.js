@@ -69,7 +69,7 @@ const Account = () => {
             </Grid>
             <Grid style={{ margin: '80px 0 0 0' }} className='account-section2' container spacing={3}>
                 <Grid item xs={12}>
-                    {!editButtonsVisible && <div className='headline3'>{user.userName}</div>}
+                    {!editButtonsVisible && <div className='headline6'>{user.userName}</div>}
                 </Grid>
             </Grid>
             <Grid className='account-section2' container spacing={3} direction="row"
@@ -84,14 +84,14 @@ const Account = () => {
 
                 <Grid item xs={12}>
                     <div style={{ textAlign: 'left' }} className='subtitle2'>E-mail</div>
-                    {!editButtonsVisible && <div style={{ textAlign: 'left' }} className='headline6'>{user.email}</div>}
+                    {!editButtonsVisible && <div style={{ textAlign: 'left', fontSize:'1.2rem' }} className='headline6'>{user.email}</div>}
                     {editButtonsVisible && (
                         <input style={{ float: 'left' }} type='text' placeholder={user.email} name='email' className='edit-input' />
                     )}
                 </Grid>
                 <Grid item xs={12}>
                     <div style={{ textAlign: 'left' }} className='subtitle2'>Phone</div>
-                    {!editButtonsVisible && <div style={{ textAlign: 'left' }} className='headline6'>+91 7456602787</div>}
+                    {!editButtonsVisible && <div style={{ textAlign: 'left', fontSize:'1.2rem' }} className='headline6'>+91 7456602787</div>}
                     {editButtonsVisible && (
                         <input style={{ float: 'left' }} type='text' placeholder='+91 7456602787' name='phone' className='edit-input' />
                     )}

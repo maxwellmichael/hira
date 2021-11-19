@@ -64,6 +64,7 @@ function App() {
       <ReactReduxFirebaseProvider config={rrfConfig} firebase={firebase} dispatch={store.dispatch}
         createFirestoreInstance={createFirestoreInstance}>
         <Router>
+
           <ThemeProvider theme={theme}>
             <Layout>
               <ToastContainer
@@ -78,6 +79,7 @@ function App() {
               </div>
             </Layout>
           </ThemeProvider>
+
         </Router>
       </ReactReduxFirebaseProvider>
     </Provider>

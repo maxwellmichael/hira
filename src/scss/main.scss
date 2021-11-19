@@ -9,17 +9,24 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 //font-family: 'JetBrains Mono', monospace;
 
+//UI
 @import './components/ui/buttons';
 @import './components/ui/typography';
 @import './components/ui/containers';
 @import './components/ui/forms';
 @import './components/ui/lines';
 
+//layout
 @import '../components/layout/footer/styles/footer';
 @import '../components/layout/navbar/styles/navbar';
+
+//Utils
 @import '../components/utils/modals/styles/modal';
 @import '../components/utils/styles/starRatingDisplay';
 @import '../components/utils/styles/quantityButton';
+
+//Animations
+@import '../components/utils/animations/styles/imagesRevealAnimation';
 
 
 /* Pages */

@@ -1,23 +1,27 @@
 import Footer from './footer';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Modal from '../utils/modals';
 import NavBar from './navbar';
 
-const Layout = ({modal,children})=>{
-    return(
-        <div style={{backgroundColor:'#fff'}} className='layout'>
-            {modal.isVisible?<Modal />:null}
-            <NavBar/>
-            <div style={{ marginTop: '4rem'}}>
+
+const Layout = ({ modal, children }) => {
+    return (
+
+        <div style={{ backgroundColor: '#fff' }} className='layout'>
+            {modal.isVisible ? <Modal /> : null}
+            <NavBar />
+            <div style={{ marginTop: '4rem' }}>
                 {children}
             </div>
-            <Footer/>
+
+            <Footer />
         </div>
+
     )
 }
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
 
-    return({
+    return ({
         modal: state.modal
     })
 }
