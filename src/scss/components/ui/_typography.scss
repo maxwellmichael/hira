@@ -1,6 +1,5 @@
-
-.headline1{
-    font-family: 'Work Sans', sans-serif;
+.headline1 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 700;
     text-transform: none;
     line-height: normal;
@@ -9,10 +8,13 @@
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     font-size: 5.8rem;
+    @media screen and(max-width:900px) {
+        font-size: 2.5rem;
+    }
 }
 
-.headline2{
-    font-family: 'Work Sans', sans-serif;
+.headline2 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 700;
     text-transform: none;
     line-height: normal;
@@ -21,10 +23,13 @@
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     font-size: 5rem;
+    @media screen and(max-width:900px) {
+        font-size: 2.34rem;
+    }
 }
 
-.headline3{
-    font-family: 'Work Sans', sans-serif;
+.headline3 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 500;
     text-transform: none;
     line-height: normal;
@@ -33,10 +38,13 @@
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     font-size: 4.5rem;
+    @media screen and(max-width:900px) {
+        font-size: 2.25rem;
+    }
 }
 
-.headline4{
-    font-family: 'Work Sans', sans-serif;
+.headline4 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 500;
     text-transform: none;
     line-height: normal;
@@ -45,10 +53,13 @@
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     font-size: 4rem;
+    @media screen and(max-width:900px) {
+        font-size: 2rem;
+    }
 }
 
-.headline5{
-    font-family: 'Work Sans', sans-serif;
+.headline5 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 500;
     text-transform: none;
     line-height: normal;
@@ -56,11 +67,14 @@
     display: block;
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
-    font-size:3.5rem;
+    font-size: 3.5rem;
+    @media screen and(max-width:900px) {
+        font-size: 1.525rem;
+    }
 }
 
-.headline6{
-    font-family: 'Work Sans', sans-serif;
+.headline6 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 500;
     text-transform: none;
     line-height: normal;
@@ -69,10 +83,13 @@
     letter-spacing: 0;
     text-rendering: optimizeLegibility;
     font-size: 3rem;
+    @media screen and(max-width:900px) {
+        font-size: 1.45rem;
+    }
 }
 
-.subtitle1{
-    font-family: 'Work Sans', sans-serif;
+.subtitle1 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
     color: #1f1f21;
@@ -80,8 +97,8 @@
     text-rendering: optimizeLegibility;
 }
 
-.subtitle2{
-    font-family: 'Work Sans', sans-serif;
+.subtitle2 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     color: #1f1f21;
@@ -89,11 +106,33 @@
     text-rendering: optimizeLegibility;
 }
 
-.subtitle3{
-    font-family: 'Work Sans', sans-serif;
+.subtitle3 {
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 0.8rem;
     color: #1f1f21;
     line-height: 1.5;
     text-rendering: optimizeLegibility;
+}
+
+.title1 {
+    position: relative;
+    text-align: center;
+    z-index: 4;
+    color: white;
+    letter-spacing: 0.05em;
+    word-spacing: 1vw;
+    @media screen and(max-width:900px) {
+        font-size: 2.5rem;
+    }
+}
+
+.rotate90 {
+    position: relative;
+    max-height: 100vh;
+    /* Border is the new background */
+    background: none;
+    /* Rotate from top left corner (not default) */
+   
+    transform: rotate(90deg);
 }

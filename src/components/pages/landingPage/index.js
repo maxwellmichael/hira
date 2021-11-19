@@ -31,7 +31,7 @@ const LandingPage = () => {
 
                 <Grid style={{ margin: '4rem 0 4rem 0' }} item xs={12}>
 
-                    <motion.div className='title headline1'>Best Of Designs</motion.div>
+                    <motion.div style={{ fontSize: '5.8rem' }} className='title headline1'>Best Of Designs</motion.div>
 
                     <AnimatePresence>
                         <ImagesRevealAnimation
@@ -50,15 +50,31 @@ const LandingPage = () => {
                         <div style={{ backgroundImage: `url(${DesktopBanner})` }} className='image-layer'></div>
                         <div className='overlay'></div>
                         <div className='content-container'>
-                            <div className='title headline3'>Up to 60% Off</div>
+                            <div className='title headline1'>Up to 60% Off</div>
                             <button className='transparent-button'>SHOP NOW</button>
                         </div>
                     </div>
                 </Grid>
 
-                {/* <Grid style={{marginTop:'4rem'}} item xs={12}>
-                    <h2 style={{fontSize:'5.938vw'}}  className='title headline1'>Luxurious and Contemporary Appeal for Every Woman</h2>
-                </Grid> */}
+                <Grid style={{ marginTop: '4rem' }} item xs={12}>
+                    <div className='newsletter'>
+                        <div className='small-title title1 subtitle1'>
+                            NEWSLETTER
+                        </div>
+                        <div className='main-title headline6'>
+                            Subscribe to get
+                            the latest updates
+                        </div>
+
+                        <div className='content'>
+                            <input placeholder='E-mial' type='text'></input>
+                            <button className='primary-button'>SUBSCRIBE</button>
+                        </div>
+
+                    </div>
+                </Grid>
+
+
 
 
             </Grid>

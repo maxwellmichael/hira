@@ -28,37 +28,37 @@ export default function Drawer(props) {
       
     {
         title: 'Home',
-        logo: <HomeRoundedIcon color='secondary'/>,
+        logo: <HomeRoundedIcon style={{color:'black'}}/>,
         link: '/'
     },
     {
         title: 'Shop',
-        logo: <StoreIcon color='secondary'/>,
+        logo: <StoreIcon style={{color:'black'}}/>,
         link: '/products'
     },
     {
         title: 'About',
-        logo: <InfoRoundedIcon color='secondary'/>,
+        logo: <InfoRoundedIcon style={{color:'black'}}/>,
         link: '/about'
     },
     {
         title: 'Contact',
-        logo: <ContactMailRoundedIcon color='secondary'/>,
+        logo: <ContactMailRoundedIcon style={{color:'black'}}/>,
         link: '/contact'
     },
     {
         title: 'Shipping',
-        logo: <LocalShippingRoundedIcon color='secondary'/>,
+        logo: <LocalShippingRoundedIcon style={{color:'black'}}/>,
         link: '/shipping'
     },
     {
         title: 'Billing',
-        logo: <ReceiptRoundedIcon color='secondary'/>,
+        logo: <ReceiptRoundedIcon style={{color:'black'}}/>,
         link: '/billing'
     },
     {
         title: 'Support',
-        logo: <HelpRoundedIcon color='secondary'/>,
+        logo: <HelpRoundedIcon style={{color:'black'}}/>,
         link: '/support'
     }
 ]
