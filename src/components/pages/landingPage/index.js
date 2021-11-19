@@ -1,7 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Grid } from '@material-ui/core';
-import { useMediaQuery } from '@material-ui/core';
-import MobileBanner from '../../../images/banners/dress-banner-mobile.jpg';
 import DesktopBanner from '../../../images/banners/dress-banner-desktop.jpg';
 import Banner1 from '../../../images/banners/landing_page_banner.jpg';
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
@@ -17,7 +15,6 @@ import AnimationImage4 from '../../../images/banners/animation-image-4.jpg';
 
 const LandingPage = () => {
 
-    const isMobile = useMediaQuery('(max-width:900px)');
     return (
         <motion.div key='landing-page' style={{ backgroundColor: '#fff' }} variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
             <Grid style={{ margin: 0, padding: 0 }} className='landing-page' container>
@@ -32,10 +29,10 @@ const LandingPage = () => {
                 </Grid>
 
 
-                <Grid style={{margin:'4rem 0 4rem 0'}} item xs={12}>
-                   
+                <Grid style={{ margin: '4rem 0 4rem 0' }} item xs={12}>
+
                     <motion.div className='title headline1'>Best Of Designs</motion.div>
-                   
+
                     <AnimatePresence>
                         <ImagesRevealAnimation
                             key='animation1'
@@ -50,14 +47,18 @@ const LandingPage = () => {
 
                 <Grid item xs={12}>
                     <div className='fixed-banner'>
-                        <div style={{ backgroundImage: `url(${isMobile ? MobileBanner : DesktopBanner})` }} className='image-layer'></div>
+                        <div style={{ backgroundImage: `url(${DesktopBanner})` }} className='image-layer'></div>
                         <div className='overlay'></div>
                         <div className='content-container'>
-                            <div className='title headline3'>UP TO 60% OFF</div>
+                            <div className='title headline3'>Up to 60% Off</div>
                             <button className='transparent-button'>SHOP NOW</button>
                         </div>
                     </div>
                 </Grid>
+
+                {/* <Grid style={{marginTop:'4rem'}} item xs={12}>
+                    <h2 style={{fontSize:'5.938vw'}}  className='title headline1'>Luxurious and Contemporary Appeal for Every Woman</h2>
+                </Grid> */}
 
 
             </Grid>

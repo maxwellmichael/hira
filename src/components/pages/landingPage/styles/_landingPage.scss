@@ -63,6 +63,11 @@
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            @media screen and(max-width:900px) {
+                background-size: fill;
+                background-attachment: local;
+            }
         }
         .overlay {
             width: 100%;
@@ -97,7 +102,7 @@
         }
 
         @media screen and (max-width: 900px) {
-            height: 450px;
+            height: 40vh;
             margin:0;
         }
     }
