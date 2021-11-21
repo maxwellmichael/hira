@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Grid } from '@material-ui/core';
 import { useMediaQuery } from '@material-ui/core';
-import { Suspense, lazy } from 'react'
+import { Suspense} from 'react'
 
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import { ImagesRevealAnimation, ImageInfiniteSlider } from '../../utils/animations/imagesRevealAnimation';
