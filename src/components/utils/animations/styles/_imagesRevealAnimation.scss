@@ -16,20 +16,20 @@
         top: 25%;
         width: 60%;
         height: 50%;
-       
+
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
         video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
     }
 
@@ -63,7 +63,7 @@
             height: 100%;
             object-fit: cover;
             box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
         @media (max-width: 900px) {
         }
@@ -81,7 +81,7 @@
             height: 100%;
             object-fit: cover;
             box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
         @media (max-width: 900px) {
         }
@@ -99,7 +99,7 @@
             height: 100%;
             object-fit: cover;
             box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+                rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
         @media (max-width: 900px) {
         }
@@ -107,5 +107,62 @@
 
     @media (max-width: 900px) {
         height: 50vh;
+    }
+}
+
+.images-slide-animation-main {
+    padding: 20rem 0;
+    width: 100%;
+    height: 200vh;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+
+    .slider {
+        width: 210%;
+        height: 100vh;
+        transform: rotate(15deg);
+        position: absolute;
+        overflow: hidden;
+
+        .child-container {
+            padding: 0 2rem;
+            position: absolute;
+            width: 50vw;
+            height: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+                height: auto;
+                position: relative;
+                object-fit: cover;
+                object-position: center top;
+                user-select: none;
+                backface-visibility: hidden;
+            }
+        }
+    }
+
+    @media screen and(max-width:900px) {
+        height: 100vh;
+        padding: 10rem 0;
+
+        .slider {
+            height: 60vh;
+            .child-container {
+                padding: 0 0.1rem;
+                img {
+                    height: 70vh;
+                }
+            }
+        }
     }
 }

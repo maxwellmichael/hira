@@ -1,23 +1,39 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Grid } from '@material-ui/core';
-import DesktopBanner from '../../../images/banners/dress-banner-desktop.jpg';
-import Banner1 from '../../../images/banners/landing_page_banner.jpg';
+import { useMediaQuery } from '@material-ui/core';
+
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
-import { ImagesRevealAnimation } from '../../utils/animations/imagesRevealAnimation';
+import { ImagesRevealAnimation, ImageInfiniteSlider } from '../../utils/animations/imagesRevealAnimation';
+import { RevealFromBottom } from '../../utils/animations/contentRevealAnimations';
+
+import DesktopBanner from '../../../images/banners/dress-banner-desktop.webp';
+import Banner1 from '../../../images/banners/landing_page_banner.webp';
 
 import AnimationVideo from '../../../images/banners/landing-page-video.mp4'
-import AnimationImage1 from '../../../images/banners/animation-image-1.jpg';
-import AnimationImage2 from '../../../images/banners/animation-image-2.jpg';
-import AnimationImage3 from '../../../images/banners/animation-image-3.jpg';
-import AnimationImage4 from '../../../images/banners/animation-image-4.jpg';
+import AnimationVideoMobile from '../../../images/banners/landing-page-video-mobile.mp4'
+
+import AnimationImage1 from '../../../images/banners/animation-image-1.webp';
+import AnimationImage2 from '../../../images/banners/animation-image-2.webp';
+import AnimationImage3 from '../../../images/banners/animation-image-3.webp';
+import AnimationImage4 from '../../../images/banners/animation-image-4.webp';
+
+import Lookbook1 from '../../../images/banners/lookbook-1.webp'
+import Lookbook2 from '../../../images/banners/lookbook-2.webp';
+import Lookbook3 from '../../../images/banners/lookbook-3.webp';
+import Lookbook4 from '../../../images/banners/lookbook-4.webp';
+
 
 
 
 const LandingPage = () => {
 
+    const isMobile = useMediaQuery('(max-width:900px)');
+
+
     return (
         <motion.div key='landing-page' style={{ backgroundColor: '#fff' }} variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
             <Grid style={{ margin: 0, padding: 0 }} className='landing-page' container>
+
                 <Grid item xs={12}>
                     <div className='landing-banner'>
                         <img alt='Main Banner' src={Banner1} />
@@ -28,15 +44,12 @@ const LandingPage = () => {
                     </div>
                 </Grid>
 
-
                 <Grid style={{ margin: '4rem 0 4rem 0' }} item xs={12}>
-
                     <motion.div style={{ fontSize: '5.8rem' }} className='title headline1'>Best Of Designs</motion.div>
-
                     <AnimatePresence>
                         <ImagesRevealAnimation
                             key='animation1'
-                            mainImage={AnimationVideo}
+                            mainImage={isMobile?AnimationVideoMobile:AnimationVideo}
                             image1={AnimationImage1}
                             image2={AnimationImage2}
                             image3={AnimationImage3}
@@ -46,17 +59,24 @@ const LandingPage = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <div className='fixed-banner'>
-                        <div style={{ backgroundImage: `url(${DesktopBanner})` }} className='image-layer'></div>
-                        <div className='overlay'></div>
-                        <div className='content-container'>
-                            <div className='title headline1'>Up to 60% Off</div>
-                            <button className='transparent-button'>SHOP NOW</button>
+                    <RevealFromBottom>
+                        <div className='fixed-banner'>
+                            <div style={{ backgroundImage: `url(${DesktopBanner})` }} className='image-layer'></div>
+                            <div className='overlay'></div>
+                            <div className='content-container'>
+                                <div className='title headline1'>Up to 60% Off</div>
+                                <button className='transparent-button'>SHOP NOW</button>
+                            </div>
                         </div>
-                    </div>
+                    </RevealFromBottom>
                 </Grid>
 
-                <Grid style={{ marginTop: '4rem' }} item xs={12}>
+
+                <Grid item xs={12}>
+                    <ImageInfiniteSlider image1={Lookbook1} image2={Lookbook2} image3={Lookbook3} image4={Lookbook4} />
+                </Grid>
+
+                <Grid item xs={12}>
                     <div className='newsletter'>
                         <div className='small-title title1 subtitle1'>
                             NEWSLETTER
@@ -67,7 +87,7 @@ const LandingPage = () => {
                         </div>
 
                         <div className='content'>
-                            <input placeholder='E-mial' type='text'></input>
+                            <input placeholder='E-mail' type='text'></input>
                             <button className='primary-button'>SUBSCRIBE</button>
                         </div>
 

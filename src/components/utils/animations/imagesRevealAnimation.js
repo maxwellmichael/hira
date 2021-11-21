@@ -1,6 +1,7 @@
-import { motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useMediaQuery } from '@material-ui/core';
 
 export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image4 }) => {
   const { ref, inView } = useInView({ threshold: 0 });
@@ -88,5 +89,58 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
 
     </motion.div>)
 }
+
+
+export const ImageInfiniteSlider = ({ image1, image2, image3, image4 }) => {
+
+  const [images, setImages] = useState([{image:image1, pos:0},{image:image2, pos:50},{image:image3, pos:100},{image:image4, pos:150}])
+  const isMobile = useMediaQuery('(max-width:900px)');
+  const overflowPoint = isMobile?-39.9:-49.0;
+  useEffect(()=>{
+    let newImages = [...images]
+    const overFlowedImage = images.filter(image=>image.pos<=overflowPoint)
+    if(overFlowedImage.length===0){
+      const interval = setInterval(() =>{
+        newImages = images.map((Image)=>{ return({image:Image.image, pos:Image.pos-5})})
+        setImages(newImages)
+      }, 1500);
+      return ()=>{
+        clearInterval(interval);
+      }
+    }
+    else{
+      setImages((images)=>{
+        let image = images[0];
+        image.pos=images[3].pos+50;
+        images.push(image);
+        images = images.slice(1);
+        return images;
+      })
+    }
+  },[images, overflowPoint])
+//style={{x:`${image.pos}vw`}}
+  return (
+    <div className='images-slide-animation-main' >
+      <div className='slider'>
+        <AnimatePresence>
+        {images.map((image,i)=>(
+          <motion.div 
+            key={i} 
+            transition={{duration:1.5, ease:'linear'}} 
+            initial='hidden' 
+            exit='hidden'
+            animate={{x:[`${image.pos+5}vw`, `${image.pos+4}vw`, `${image.pos+3}vw`, `${image.pos+2}vw`, `${image.pos+1}vw`,`${image.pos}vw`]}} 
+            
+            className='child-container' >
+            <motion.img src={image.image} />
+          </motion.div>
+        ))}
+        </AnimatePresence>
+          
+      </div>
+    </div>)
+}
+
+
 
 
