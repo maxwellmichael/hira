@@ -6,7 +6,6 @@ import modalReducer from './reducers/modal.reducer';
 import addressReducer from './reducers/address.reducer';
 import filterCheckBoxReducer from './reducers/filterCheckBox.reducer';
 import ordersReducer from './reducers/orders.reducer';
-//import { connectRouter } from 'connected-react-router'
 import { firestoreReducer } from 'redux-firestore';
 
 
