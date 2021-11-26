@@ -22,6 +22,7 @@ const ClothingPage = ({ dispatch, products, categories, materials, selectedFilte
     ]
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         if (selectedFilters.length === 0) {
             dispatch(GET_CATEGORIES_FROM_FIRESTORE());
             dispatch(GET_MATERIALS_FROM_FIRESTORE());
@@ -34,10 +35,9 @@ const ClothingPage = ({ dispatch, products, categories, materials, selectedFilte
 
 
     return (
-        <motion.div variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
-            <Grid container style={{ margin: 0, overflow: 'hidden', }}>
-
-                <Grid container spacing={3}>
+        <motion.div key='Product Page' variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
+            <Grid style={{ margin: 0, padding:0}} container>
+                <Grid container>
                     <Grid item xs={12}><div style={{ paddingTop: '1rem' }} className='headline2'>WOMEN</div></Grid>
                     <Grid item xs={12} md={3}>
                         <motion.div transition={{ duration: 0.8 }} initial={{ x: -400 }} animate={{ x: 0 }}>

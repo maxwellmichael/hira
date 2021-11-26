@@ -1,12 +1,14 @@
 import { Grid } from '@material-ui/core';
 import { useMediaQuery } from '@material-ui/core';
+import { useEffect } from 'react';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { PageLoadVariant1 } from '../../../../../variants/pageLoadVariants';
 import QuantityButton from '../../../../utils/quantityButton';
 import StarRatingDisplay from '../../../../utils/starRatingDisplay';
 
 const ProductDetailsView = (props) => {
     const product = props.location.state;
-    console.log(product)
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
@@ -41,9 +43,12 @@ const ProductDetailsView = (props) => {
         setCurrentImageIndex(i);
     }
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     return (
+        <motion.div key='landing-page' variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
         <Grid style={{ margin: 0 }} container className="product-slider">
             <Grid item md={6} xs={12}>
                 <Grid style={{ margin: 0 }} container>
@@ -107,6 +112,7 @@ const ProductDetailsView = (props) => {
                 </Grid>
             </Grid>
         </Grid>
+        </motion.div>
     );
 }
 

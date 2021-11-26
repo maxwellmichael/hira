@@ -64,7 +64,7 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
     <motion.div ref={ref} className='images-reveal-animation-main' variants={containerVariant} animate={controls}>
 
       <motion.div className='child-container1'  >
-        <motion.img variants={childVariant} src={image1} />
+        <motion.img alt={`slide image 1`} variants={childVariant} src={image1} />
       </motion.div>
 
       <motion.div className='main-image'>
@@ -75,22 +75,20 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
       </motion.div>
 
       <motion.div className='child-container2'  >
-        <motion.img variants={childVariant} src={image2} />
+        <motion.img alt={`slide image 2`} variants={childVariant} src={image2} />
       </motion.div>
 
       <motion.div className='child-container3' >
-        <motion.img variants={childVariant} src={image3} />
+        <motion.img alt={`slide image 3`} variants={childVariant} src={image3} />
       </motion.div>
 
       <motion.div className='child-container4' >
-        <motion.img variants={childVariant} src={image4} />
+        <motion.img alt={`slide image 4`} variants={childVariant} src={image4} />
       </motion.div>
 
 
     </motion.div>)
 }
-
-
 export const ImageInfiniteSlider = ({ image1, image2, image3, image4 }) => {
 
   const [images, setImages] = useState([{image:image1, pos:0},{image:image2, pos:50},{image:image3, pos:100},{image:image4, pos:150}])
@@ -103,7 +101,7 @@ export const ImageInfiniteSlider = ({ image1, image2, image3, image4 }) => {
       const interval = setInterval(() =>{
         newImages = images.map((Image)=>{ return({image:Image.image, pos:Image.pos-5})})
         setImages(newImages)
-      }, 1500);
+      }, 1000);
       return ()=>{
         clearInterval(interval);
       }
@@ -126,13 +124,13 @@ export const ImageInfiniteSlider = ({ image1, image2, image3, image4 }) => {
         {images.map((image,i)=>(
           <motion.div 
             key={i} 
-            transition={{duration:1.5, ease:'linear'}} 
+            transition={{duration:1, ease:'linear'}} 
             initial='hidden' 
             exit='hidden'
             animate={{x:[`${image.pos+5}vw`, `${image.pos+4}vw`, `${image.pos+3}vw`, `${image.pos+2}vw`, `${image.pos+1}vw`,`${image.pos}vw`]}} 
             
             className='child-container' >
-            <motion.img src={image.image} />
+            <motion.img alt={`slide image ${i}`} src={image.image} />
           </motion.div>
         ))}
         </AnimatePresence>

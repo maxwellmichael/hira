@@ -7,7 +7,7 @@ import NavBar from './navbar';
 const Layout = ({ modal, children }) => {
     return (
 
-        <div style={{ backgroundColor: '#fff' }} className='layout'>
+        <div style={{ backgroundColor: '#fff', overflow:'hidden' }} className='layout'>
             {modal.isVisible ? <Modal /> : null}
             <NavBar />
             <div style={{ marginTop: '4rem' }}>

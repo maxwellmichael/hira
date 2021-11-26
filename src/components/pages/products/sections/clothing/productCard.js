@@ -22,7 +22,7 @@ const ProductCard = (props) => {
             opacity: 1,
             transition: {
                 delay: 0.1,
-                duration: 0.6,
+                duration: 1,
             }
         });
     }

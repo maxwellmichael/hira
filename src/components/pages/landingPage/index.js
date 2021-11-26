@@ -1,16 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Grid } from '@material-ui/core';
 import { useMediaQuery } from '@material-ui/core';
-import { Suspense} from 'react'
+import { useEffect } from 'react';
 
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import { ImagesRevealAnimation, ImageInfiniteSlider } from '../../utils/animations/imagesRevealAnimation';
 import { RevealFromBottom } from '../../utils/animations/contentRevealAnimations';
 
-
 import MainBanner from '../../../images/banners/landing_page_banner.webp';
 import MainBannerMobile from '../../../images/banners/landing_page_banner_mobile.webp';
-
 import FixedBanner from '../../../images/banners/dress-banner-desktop.webp';
 import AnimationVideo from '../../../images/banners/landing-page-video.webm'
 import AnimationVideoMobile from '../../../images/banners/landing-page-video-mobile.webm'
@@ -59,22 +57,26 @@ const LandingPage = () => {
 
     const isMobile = useMediaQuery('(max-width:900px)');
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
 
     return (
         <motion.div key='landing-page' variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
-            <Grid style={{ margin: 0, padding: 0 }} className='landing-page' container>
+            <Grid style={{ margin: 0, padding: 0, overflow: 'hidden' }} className='landing-page' container>
                 <Grid item xs={12}>
                     <div className='landing-banner'>
                         <img alt='Hira Fashion Hero Section Banner' src={isMobile ? MainBannerMobile : MainBanner} />
                         <div className='center-alignment'>
                             <div style={{ top: '30%' }} className='title headline2'>Women's Collection</div>
                         </div>
-
                     </div>
                 </Grid>
 
-                <Suspense fallback={<div>...</div>}>
-                    <Grid style={{ margin: '4rem 0 4rem 0' }} item xs={12}>
+
+                <Grid style={{ margin: '4rem 0 4rem 0', overflow: 'hidden' }} item xs={12}>
+                    <RevealFromBottom>
                         <motion.div style={{ fontSize: '5.8rem' }} className='title headline1'>Best Of Designs</motion.div>
                         <AnimatePresence>
                             <ImagesRevealAnimation
@@ -86,33 +88,36 @@ const LandingPage = () => {
                                 image4={isMobile ? AnimationImageMobile4 : AnimationImage4}
                             />
                         </AnimatePresence>
-                    </Grid>
+                    </RevealFromBottom>
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <RevealFromBottom>
-                            <div className='fixed-banner'>
-                                <div style={{ backgroundImage: `url(${FixedBanner})` }} className='image-layer'></div>
-                                <div className='overlay'></div>
-                                <div className='content-container'>
-                                    <div className='title headline1'>Up to 60% Off</div>
-                                    <button className='transparent-button'>SHOP NOW</button>
-                                </div>
-                            </div>
-                        </RevealFromBottom>
-                    </Grid>
+                <Grid style={{ overflow: 'hidden' }} item xs={12}>
+                    <div className='fixed-banner'>
+                        <div style={{ backgroundImage: `url(${FixedBanner})` }} className='image-layer'></div>
+                        <div className='overlay'></div>
+                        <div className='content-container'>
+                            <div className='title headline1'>Up to 60% Off</div>
+                            <button className='transparent-button'>SHOP NOW</button>
+                        </div>
+                    </div>
+                </Grid>
 
 
-                    <Grid item xs={12}>
+                <Grid style={{ marginTop: '4rem', overflow: 'hidden' }} item xs={12}>
+                    <RevealFromBottom>
+                        <motion.div className='title headline1'>From The House Of HIRA</motion.div>
                         <ImageInfiniteSlider
                             image1={isMobile ? LookbookMobile1 : Lookbook1}
                             image2={isMobile ? LookbookMobile2 : Lookbook2}
                             image3={isMobile ? LookbookMobile3 : Lookbook3}
                             image4={isMobile ? LookbookMobile4 : Lookbook4}
                         />
-                    </Grid>
+                    </RevealFromBottom>
+                </Grid>
 
-                    <Grid item xs={12}>
-                        <div className='newsletter'>
+                <Grid item xs={12}>
+                    <RevealFromBottom>
+                        <motion.div className='newsletter'>
                             <div className='small-title title1 subtitle1'>
                                 NEWSLETTER
                             </div>
@@ -125,12 +130,9 @@ const LandingPage = () => {
                                 <input placeholder='E-mail' type='text'></input>
                                 <button className='primary-button'>SUBSCRIBE</button>
                             </div>
-
-                        </div>
-                    </Grid>
-
-                </Suspense>
-
+                        </motion.div>
+                    </RevealFromBottom>
+                </Grid>
             </Grid>
         </motion.div>
     )

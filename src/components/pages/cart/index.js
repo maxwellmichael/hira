@@ -1,4 +1,6 @@
-import { Grid} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import { motion } from 'framer-motion';
+import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import Card from './sections/card';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
@@ -11,6 +13,7 @@ import { getCurrentUser } from '../../../services/user';
 const CartPage = ({ dispatch, cart }) => {
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(GET_CART_FROM_FIRESTORE())
     }, [dispatch])
 
@@ -38,82 +41,84 @@ const CartPage = ({ dispatch, cart }) => {
 
 
     return (
-        <Grid style={{ margin: '12px 0px 0px 0px', overflow: 'hidden' }} container>
-            <Grid item xs={12} style={{ margin: '50px auto' }}>
-                <div className='headline1'>CART</div>
+        <motion.div key='landing-page' variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
+            <Grid style={{ margin: '12px 0px 0px 0px', overflow: 'hidden' }} container>
+                <Grid item xs={12} style={{ margin: '50px auto' }}>
+                    <div className='headline1'>CART</div>
+                </Grid>
+
+                <Grid item xs={12} md={8} style={{ borderRight: '1px solid #edebef', borderBottom: '1px solid #edebef', marginBottom: 50 }}>
+
+                    <Grid container spacing={3}>
+
+                        <Grid item xs={12}>
+                            <div style={{ padding: '12px 4px', fontSize: '2rem' }} className='headline6'>You have {cart.length} item(s) in your cart</div>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container>
+                        {cart.map((set, i) => {
+                            return (<Card key={i} set={set} />)
+                        })}
+
+                    </Grid>
+
+
+                </Grid>
+
+                <Grid item xs={12} md={4}>
+                    <Grid container justify='center'>
+                        <div className='headline6' style={{ fontSize: '2rem' }}>Order details</div>
+                        <hr style={{ width: '80%', marginTop: 10 }} className='center-ball'></hr>
+                    </Grid>
+
+                    <Grid container direction='column' justify='space-between' >
+                        <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
+                            <Grid item xs={6}>
+                                <div style={{ fontSize: '1.5rem', textAlign: 'left' }} className='headline6'>SUBTOTAL:</div>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <div style={{ fontSize: '1.5rem' }} className='headline6'>₹{totalAmount}</div>
+                            </Grid>
+                        </Grid>
+
+                        <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
+                            <Grid item xs={6}>
+                                <div style={{ fontSize: '1.5rem', textAlign: 'left' }} className='headline6'>Shipping:</div>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <div style={{ fontSize: '1.5rem' }} className='headline6'>{shippingAmount > 0 ? `₹${shippingAmount}` : 'FREE'}</div>
+                            </Grid>
+                        </Grid>
+
+                        <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
+                            <Grid item xs={6}>
+                                <div style={{ fontWeight: 600, fontSize: '1.5rem', textAlign: 'left' }} className='headline6'>Total Amount:</div>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <div style={{ fontWeight: 600, fontSize: '1.5rem' }} className='headline6'>₹{shippingAmount + totalAmount}</div>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container justify='space-between'>
+                        <hr style={{ width: '80%' }} ></hr>
+                    </Grid>
+
+                    <Grid container justify='space-evenly'>
+                        <button
+                            onClick={() => handleCheckout()}
+                            style={{ width: '80%' }}
+                            className='primary-button'>
+                            CHECKOUT
+                        </button>
+                    </Grid>
+
+                </Grid>
+
+
             </Grid>
-
-            <Grid item xs={12} md={8} style={{ borderRight: '1px solid #edebef', borderBottom: '1px solid #edebef', marginBottom: 50 }}>
-
-                <Grid container spacing={3}>
-
-                    <Grid item xs={12}>
-                        <div style={{ padding: '12px 4px', fontSize: '2rem' }} className='headline6'>You have {cart.length} item(s) in your cart</div>
-                    </Grid>
-                </Grid>
-
-                <Grid container>
-                    {cart.map((set, i) => {
-                        return (<Card key={i} set={set} />)
-                    })}
-
-                </Grid>
-
-
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-                <Grid container justify='center'>
-                    <div className='headline6' style={{ fontSize: '2rem' }}>Order details</div>
-                    <hr style={{ width: '80%', marginTop: 10 }} className='center-ball'></hr>
-                </Grid>
-
-                <Grid container direction='column' justify='space-between' >
-                    <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
-                        <Grid item xs={6}>
-                            <div style={{ fontSize: '1.5rem', textAlign:'left' }} className='headline6'>SUBTOTAL:</div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <div style={{ fontSize: '1.5rem' }} className='headline6'>₹{totalAmount}</div>
-                        </Grid>
-                    </Grid>
-
-                    <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
-                        <Grid item xs={6}>
-                            <div style={{ fontSize: '1.5rem', textAlign:'left' }} className='headline6'>Shipping:</div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <div style={{ fontSize: '1.5rem' }} className='headline6'>{shippingAmount > 0 ? `₹${shippingAmount}` : 'FREE'}</div>
-                        </Grid>
-                    </Grid>
-
-                    <Grid style={{ margin: '12px 0 0 0' }} container spacing={3} direction='row'>
-                        <Grid item xs={6}>
-                            <div style={{ fontWeight: 600, fontSize: '1.5rem', textAlign:'left' }} className='headline6'>Total Amount:</div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <div style={{ fontWeight: 600, fontSize: '1.5rem' }} className='headline6'>₹{shippingAmount + totalAmount}</div>
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-                <Grid container justify='space-between'>
-                    <hr style={{ width: '80%' }} ></hr>
-                </Grid>
-
-                <Grid container justify='space-evenly'>
-                    <button
-                        onClick={() => handleCheckout()}
-                        style={{ width: '80%' }}
-                        className='primary-button'>
-                        CHECKOUT
-                    </button>
-                </Grid>
-
-            </Grid>
-
-
-        </Grid>
+        </motion.div>
     );
 }
 

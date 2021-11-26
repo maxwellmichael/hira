@@ -93,7 +93,6 @@ const Routes = () => {
         return () => unsubscribe();
     }, [dispatch])
 
-
     return (
         <AnimatePresence>
             <Switch location={location} key={location.pathname}>

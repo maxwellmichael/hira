@@ -5,8 +5,9 @@ const navbarStyle = makeStyles((theme) => {
     offset: theme.mixins.toolbar,
 
     grow: {
-      flexGrow: 1,
+     
       backgroundColor: '#fff',
+      maxWidth: '100vw',
     },
     menuButton: {
       marginRight: theme.spacing(2),
