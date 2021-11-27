@@ -10,7 +10,7 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
   const containerVariant = {
     show: {
       transition: {
-        staggerChildren: 1,
+        staggerChildren: 0.5,
       }
     },
 
@@ -35,7 +35,7 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
       y: 0,
       transition: {
         ease: [0.6, 0.01, -0.05, 0.95],
-        duration: 1.6,
+        duration: 1,
       },
     },
     exit: {
@@ -43,7 +43,7 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
       y: -200,
       transition: {
         ease: "easeInOut",
-        duration: 0.8,
+        duration: 0.6,
       },
     },
   };

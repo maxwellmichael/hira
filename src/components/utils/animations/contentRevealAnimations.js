@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export const RevealFromBottom = ({ children }) => {
 
-    const { ref, inView } = useInView({ threshold: 0.2 });
+    const { ref, inView } = useInView({ threshold: 0 });
     const controls = useAnimation();
 
     const controlsVariant = {

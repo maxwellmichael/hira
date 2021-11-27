@@ -69,15 +69,17 @@ const LandingPage = () => {
                     <div className='landing-banner'>
                         <img alt='Hira Fashion Hero Section Banner' src={isMobile ? MainBannerMobile : MainBanner} />
                         <div className='center-alignment'>
-                            <div style={{ top: '30%' }} className='title headline2'>Women's Collection</div>
+                            <div style={{ top: '30%' }} className='title headline1'>Women's Clothing</div>
                         </div>
                     </div>
                 </Grid>
 
 
-                <Grid style={{ margin: '4rem 0 4rem 0', overflow: 'hidden' }} item xs={12}>
+                <Grid style={{ margin: '4rem 0 4rem 0' }} item xs={12}>
                     <RevealFromBottom>
-                        <motion.div style={{ fontSize: '5.8rem' }} className='title headline1'>Best Of Designs</motion.div>
+                        <div style={{fontSize:'5.8rem'}} className='title headline1'>
+                            Best Of Designs
+                        </div>
                         <AnimatePresence>
                             <ImagesRevealAnimation
                                 key='animation1'
@@ -103,9 +105,9 @@ const LandingPage = () => {
                 </Grid>
 
 
-                <Grid style={{ marginTop: '4rem', overflow: 'hidden' }} item xs={12}>
+                <Grid style={{ margin: '4rem 0 4rem 0', overflow: 'hidden' }} item xs={12}>
                     <RevealFromBottom>
-                        <motion.div className='title headline1'>From The House Of HIRA</motion.div>
+                        <motion.div className='title headline1'><span style={{fontWeight:300}}>EXPLORING</span><br/> The Fashion <br/> <span style={{fontWeight:300}}>Of Today</span></motion.div>
                         <ImageInfiniteSlider
                             image1={isMobile ? LookbookMobile1 : Lookbook1}
                             image2={isMobile ? LookbookMobile2 : Lookbook2}
