@@ -1,0 +1,35 @@
+.text-animation1-main {
+    h1 {
+        font-family: "Work Sans", sans-serif;
+        font-weight: 700;
+        text-transform: none;
+        line-height: normal;
+        color: #181821;
+        display: block;
+        letter-spacing: 0;
+        text-rendering: optimizeLegibility;
+        font-size: 5.8rem;
+        @media screen and(max-width:900px) {
+            font-size: 3.8rem;
+        }
+    }
+
+    h2 {
+        font-family: "Work Sans", sans-serif;
+        font-weight: 700;
+        text-transform: none;
+        line-height: normal;
+        color: #181821;
+        display: block;
+        letter-spacing: 0;
+        text-rendering: optimizeLegibility;
+        font-size: 5rem;
+        @media screen and(max-width:900px) {
+            font-size: 3.4rem;
+        }
+    }
+
+    .word-wrapper {
+        white-space: nowrap;
+    }
+}

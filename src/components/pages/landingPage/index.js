@@ -28,6 +28,7 @@ import LookbookMobile1 from '../../../images/banners/lookbook-1-mobile.webp'
 import LookbookMobile2 from '../../../images/banners/lookbook-2-mobile.webp';
 import LookbookMobile3 from '../../../images/banners/lookbook-3-mobile.webp';
 import LookbookMobile4 from '../../../images/banners/lookbook-4-mobile.webp';
+import TextAnimation1 from '../../utils/animations/textAnimations';
 
 // const FixedBanner = lazy(() => import('../../../images/banners/dress-banner-desktop.webp'))
 // const AnimationVideo = lazy(() => import('../../../images/banners/landing-page-video.webm'))
@@ -75,11 +76,12 @@ const LandingPage = () => {
                 </Grid>
 
 
-                <Grid style={{ margin: '4rem 0 4rem 0' }} item xs={12}>
+                <Grid style={{ margin: '8rem 0 8rem 0' }} item xs={12}>
+
+                    <div className='headline1'>
+                        <TextAnimation1 type="heading1" text="Best Of Designs" />
+                    </div>
                     <RevealFromBottom>
-                        <div style={{fontSize:'5.8rem'}} className='title headline1'>
-                            Best Of Designs
-                        </div>
                         <AnimatePresence>
                             <ImagesRevealAnimation
                                 key='animation1'
@@ -107,7 +109,9 @@ const LandingPage = () => {
 
                 <Grid style={{ margin: '4rem 0 4rem 0', overflow: 'hidden' }} item xs={12}>
                     <RevealFromBottom>
-                        <motion.div className='title headline1'><span style={{fontWeight:300}}>EXPLORING</span><br/> The Fashion <br/> <span style={{fontWeight:300}}>Of Today</span></motion.div>
+                        <motion.div className='headline1'>
+                            <span style={{ fontWeight: 300 }} className='title1'>EXPLORING</span><br /> <span>The Fashion</span> <br /> <span style={{ fontWeight: 300 }} >Of Today</span>
+                        </motion.div>
                         <ImageInfiniteSlider
                             image1={isMobile ? LookbookMobile1 : Lookbook1}
                             image2={isMobile ? LookbookMobile2 : Lookbook2}
