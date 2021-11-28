@@ -63,7 +63,7 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
   return (
     <motion.div ref={ref} className='images-reveal-animation-main' variants={containerVariant} animate={controls}>
 
-      <motion.div className='child-container1'  >
+      <motion.div className='child-container1'>
         <motion.img alt={`slide image 1`} variants={childVariant} src={image1} />
       </motion.div>
 
