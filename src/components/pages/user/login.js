@@ -8,7 +8,19 @@ import { withRouter } from 'react-router-dom';
 import { auth } from '../../../firebase/authServices';
 import { motion } from 'framer-motion';
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
+import { ReactComponent as GoogleLogo } from '../../../images/icons/google_logo.svg';
+import * as yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 
+
+const schema = yup.object({
+ 
+  email: yup.string().required(),
+  password: yup.string()
+    .required("Please enter a password")
+    .min(8, "Password must have a minimum of 8 characters.")
+    .matches(/(?=.*[0-9])/, "Password must contain a number."),
+}).required();
 
 
 const LogIn = ({ dispatch, history }) => {
@@ -22,26 +34,32 @@ const LogIn = ({ dispatch, history }) => {
     return () => unsubscribe();
   }, [history])
 
-  const { handleSubmit, register, formState: { errors } } = useForm();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
+
+const { handleSubmit, register, formState: { errors } } = useForm({resolver: yupResolver(schema)});
   const onSubmit = handleSubmit((data) => {
     dispatch(LOGIN(data.email, data.password));
   });
 
   return (
-    <motion.div key='login-page' variant={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
+    <motion.div variant={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
       <Grid style={{ margin: 0, overflow: 'hidden' }} container>
         <form className='form-main' onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={4}>
             <Grid xs={12} item>
-              <div className='title'>Login</div>
+              <div className='title1'>Login</div>
             </Grid>
             <Grid item xs={12}>
-              <TextField style={{ width: '100%' }} label="Email" {...register("email")} />
-              {errors.email && <span>This field is required</span>}
+              <TextField type='email' style={{ width: '100%' }} label="Email" {...register("email")} />
+              {errors.email && <span className='error'>{errors.email.message}</span>}
             </Grid>
             <Grid item xs={12}>
               <TextField style={{ width: '100%' }} type='password' label="Password" {...register("password")} />
-              {errors.password && <span>This field is required</span>}
+              {errors.password && <span className='error'>{errors.password.message}</span>}
+
               <div style={{ textAlign: 'right' }} className='subtitle2'>
                 <Link style={{ color: 'rgba(0, 0, 0, 0.87)', textDecoration: 'none' }} to='/user/recover'>Forgot password</Link>
               </div>
@@ -51,14 +69,14 @@ const LogIn = ({ dispatch, history }) => {
             </Grid>
             <Grid item xs={12}>
               <div className='subtitle1'>Don't have an account?</div>
-              <button className='form-button2'>
+              <div className='form-button2'>
                 <Link style={{ color: 'rgba(0, 0, 0, 0.87)', textDecoration: 'none' }} to='/user/register'>CREATE AN ACCOUNT</Link>
-              </button>
+              </div>
             </Grid>
             <Grid item xs={12}>
               <div onClick={() => dispatch(LOGIN_WITH_GOOGLE())} className="google-btn">
                 <div className="google-icon-wrapper">
-                  <img alt='sign in with google' className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                  <GoogleLogo  className="google-icon"/>
                 </div>
                 <p className="btn-text"><b>Sign in with google</b></p>
               </div>

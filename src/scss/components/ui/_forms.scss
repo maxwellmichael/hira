@@ -65,6 +65,17 @@
         padding: 0.9375rem 1.5rem;
     }
 
+    .error{
+        font-family: "Work Sans", sans-serif;
+        font-weight: 300;
+        text-transform: none;
+        line-height: normal;
+        color: #ff0033;
+        display: block;
+        letter-spacing: 0;
+        text-rendering: optimizeLegibility;
+        font-size: 0.8rem;
+    }
 
     @media screen and(max-width:900px) {
         width: 95%;

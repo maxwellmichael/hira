@@ -45,9 +45,9 @@ const theme = createMuiTheme({
   overrides: {
     MuiInputLabel: { // Name of the component ⚛️ / style sheet
       root: { // Name of the rule
-        color: "#424553",
+        color: "black",
         "&$focused": { // increase the specificity for the pseudo class
-          color: "#771f52"
+          color: "black"
         }
       }
     }
@@ -68,11 +68,12 @@ function App() {
           <ThemeProvider theme={theme}>
             <Layout>
               <ToastContainer
-                position="top-right"
+                position="top-left"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
+                theme='dark'
               />
               <div className="App">
                 <Routes />

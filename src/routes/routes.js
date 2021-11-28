@@ -98,7 +98,7 @@ const Routes = () => {
             <Switch location={location} key={location.pathname}>
                 {mainRoutes.map((route, i) => <Route key={i} path={route.path} exact render={props => <route.component {...props} />} />)}
                 {productRoutes.map((route, i) => <RouteWithSubRoutes exact={true} key={i} {...route} />)}
-                {userRoutes.map((route, i) => <Route key={i} component={route.component} path={route.path} exact={true} {...route} />)}
+                {userRoutes.map((route, i) => <Route key={i} path={route.path} exact={true} render={props => <route.component {...props}/>} />)}
                 {!loading && privateRoutes.map((route, i) => <PrivateRoute exact={true} key={i} {...route} />)}
             </Switch>
         </AnimatePresence>

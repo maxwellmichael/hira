@@ -54,7 +54,7 @@ export const registerUserWithEmail = async (email, password, userName) => {
     try {
         const result = await auth.createUserWithEmailAndPassword(email, password);
         if (!result) {
-            return false;
+            return {hasError: true, data: null, error: null};
         }
         await firebase.firestore().collection('users').add({
             uid: result.user.uid,
@@ -62,10 +62,10 @@ export const registerUserWithEmail = async (email, password, userName) => {
             email: result.user.email,
             cart: [],
         })
-        return true;
+        return {hasError: false, data: null, error: null};
     }
     catch (error) {
         console.log(error);
-        return false;
+        return {hasError: true, data: null, error: error};
     }
 }

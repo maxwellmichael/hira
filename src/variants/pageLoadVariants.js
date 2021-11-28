@@ -8,8 +8,8 @@ export const PageLoadVariant1 = {
         y: 0,
         opacity: 1,
         transition: {
-            ease: 'linear',
-            duration: 0.6,
+            ease: [0.6, 0.01, -0.05, 0.95],
+            duration: 1.2,
         },
     },
 
@@ -17,8 +17,8 @@ export const PageLoadVariant1 = {
         opacity: 0,
         y: -500,
         transition: {
-            ease: 'linear',
-            duration: 0.6,
+            ease: 'easeInOut',
+            duration: 1.2,
         },
     },
 };
