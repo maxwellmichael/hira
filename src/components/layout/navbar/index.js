@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { IconButton, Toolbar } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
-import {GiShoppingBag} from 'react-icons/gi';
-import {BsPersonFill} from 'react-icons/bs'
+import { GiShoppingBag } from 'react-icons/gi';
+import { BsPersonFill } from 'react-icons/bs'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { ReactComponent as AppLogo } from '../../../images/icons/logo.svg';
 import { Badge } from '@material-ui/core';
@@ -19,6 +19,7 @@ import { IoMdLogOut, IoMdLogIn } from 'react-icons/io';
 import { BiUser } from 'react-icons/bi';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import CloseIcon from '@material-ui/icons/Close';
 import { CLEAR_CART } from '../../../redux/actions/cart.actions';
 import { CLEAR_ADDRESS } from '../../../redux/actions/address.actions';
 import { CLEAR_ORDERS } from '../../../redux/actions/orders.actions';
@@ -40,7 +41,7 @@ const NavBar = (props) => {
     setAnchorEl(null);
   };
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     props.dispatch(LOGOUT())
     props.dispatch(CLEAR_CART())
     props.dispatch(CLEAR_ADDRESS())
@@ -88,23 +89,30 @@ const NavBar = (props) => {
 
 
   const MobileViewSearchBar = (
-    <motion.div 
-      style={{position: 'fixed', width:'100%', zIndex:1090, padding:'2px 1rem 10px',  margin: '-1px 0 0 0', backgroundColor:'white'}} 
-      transition={{ duration: 0.3 }} 
-      initial={{ y: -200, opacity: 0 }} 
-      animate={{ y: 0, opacity: 1 }}>
-      <Grid style={{ margin: 0, overflow:'hidden' }} container direction='row' className='mobile-view-searchbar'>
+    <motion.div
+      key="mobile_view_searchbar"
+      initial={{ y: -200, opacity: 0 }}
+      animate={{ y: 0, opacity: 1, transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.65 } }}
+      exit={{ y: -200, opacity: 0, transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 } }}
+      style={{
+        position: 'fixed',
+        width: '100%',
+        zIndex: 1090,
+        padding: '2px 1rem 10px',
+        margin: '3.9rem 0 0 0',
+        backgroundColor: 'white',
+      }}>
+      <Grid style={{ margin: 0, overflow: 'hidden'}} container direction='row' className='mobile-view-searchbar'>
         <Grid item xs={11}>
           <input type='text' placeholder="Search" autoFocus />
         </Grid>
-
         <Grid item xs={1}>
           <IconButton className='search-button'>
             <SearchIcon />
           </IconButton>
         </Grid>
       </Grid>
-    </motion.div>
+    </motion.div >
   );
 
 
@@ -175,7 +183,7 @@ const NavBar = (props) => {
                   />
                 </div>) : (
                   <IconButton edge='start' className={classes.iconButton} onClick={() => setSearchbarVisibility(!searchbarVisibility)}>
-                    <SearchIcon />
+                    {searchbarVisibility ? <CloseIcon /> : <SearchIcon />}
                   </IconButton>)
               }
             </Grid>
@@ -186,7 +194,7 @@ const NavBar = (props) => {
               </IconButton>
               <IconButton disableFocusRipple disableRipple disableTouchRipple onClick={() => history.push('/cart')} edge='end' className={classes.iconButton} aria-label="cart">
                 <Badge badgeContent={props.cart ? props.cart.length : 0} color='error' >
-                  <GiShoppingBag style={{color:'black'}} />
+                  <GiShoppingBag style={{ color: 'black' }} />
                 </Badge>
               </IconButton>
             </Grid>
@@ -196,7 +204,9 @@ const NavBar = (props) => {
         </Toolbar>
       </AppBar>
       {AccountMenu}
-      {searchbarVisibility && MobileViewSearchBar}
+      <AnimatePresence>
+        {searchbarVisibility && MobileViewSearchBar}
+      </AnimatePresence>
     </div>
   );
 }
