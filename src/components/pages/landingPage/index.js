@@ -5,10 +5,8 @@ import { useEffect } from 'react';
 
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import { ImagesRevealAnimation, ImageInfiniteSlider } from '../../utils/animations/imagesRevealAnimation';
-import { RevealFromBottom } from '../../utils/animations/contentRevealAnimations';
+import { RevealFromBottom, RevealFromLeft, RevealFromRight } from '../../utils/animations/contentRevealAnimations';
 
-import MainBanner from '../../../images/banners/landing_page_banner.webp';
-import MainBannerMobile from '../../../images/banners/landing_page_banner_mobile.webp';
 import FixedBanner from '../../../images/banners/dress-banner-desktop.webp';
 import AnimationVideo from '../../../images/banners/landing-page-video.webm'
 import AnimationVideoMobile from '../../../images/banners/landing-page-video-mobile.webm'
@@ -28,7 +26,9 @@ import LookbookMobile1 from '../../../images/banners/lookbook-1-mobile.webp'
 import LookbookMobile2 from '../../../images/banners/lookbook-2-mobile.webp';
 import LookbookMobile3 from '../../../images/banners/lookbook-3-mobile.webp';
 import LookbookMobile4 from '../../../images/banners/lookbook-4-mobile.webp';
-import BlackAndWhiteImage from '../../../images/banners/black-box-banner-image.webp';
+import BoxImage1 from '../../../images/banners/box-image1.webp';
+import BoxImage2 from '../../../images/banners/box-image2.webp';
+
 import TextAnimation1 from '../../utils/animations/textAnimations';
 
 // const FixedBanner = lazy(() => import('../../../images/banners/dress-banner-desktop.webp'))
@@ -67,40 +67,52 @@ const LandingPage = () => {
     return (
         <motion.div key='landing-page' variants={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
             <Grid style={{ margin: 0, padding: 0, overflow: 'hidden' }} className='landing-page' container>
+
+                <Grid style={{ margin: '4rem 0 4rem 0', overflow: 'hidden' }} item xs={12}>
+                    <motion.div className='headline1'>
+                        <span style={{ fontWeight: 300 }} className='title1'>EXPLORING</span><br /> <span>The Fashion</span> <br /> <span style={{ fontWeight: 300 }} >Of Today</span>
+                    </motion.div>
+                    <ImageInfiniteSlider
+                        image1={isMobile ? LookbookMobile1 : Lookbook1}
+                        image2={isMobile ? LookbookMobile2 : Lookbook2}
+                        image3={isMobile ? LookbookMobile3 : Lookbook3}
+                        image4={isMobile ? LookbookMobile4 : Lookbook4}
+                    />
+                </Grid>
+
+
                 <Grid item xs={12}>
-                    <div className='landing-banner'>
-                        <img alt='Hira Fashion Hero Section Banner' src={isMobile ? MainBannerMobile : MainBanner} />
-                        <div className='center-alignment'>
-                            <div style={{ top: '30%' }} className='title headline1'>Women's Clothing</div>
-                        </div>
+                    <div className='headline1'>
+                        <TextAnimation1 type="heading1" text="How we Choose" />
                     </div>
                 </Grid>
 
-                <Grid style={{ overflow: 'hidden', marginTop: '4rem' }} item xs={12} >
-                    <RevealFromBottom>
-                        <div className='box-content-left'>
+                <Grid style={{ overflow: 'hidden', margin: ' 4rem 0 8rem 0' }} item xs={12} >
+                    <RevealFromLeft>
+                        <div className='box-content'>
+                            <div className='image-section'>
+                                <img src={BoxImage2} alt='black fashion' />
+                            </div>
                             <div className='content-section'>
-                                <div style={{ color: 'white', textAlign: 'center' }} className='headline2'>Quality & Comfort</div>
+                                <div style={{ color: 'white', textAlign: 'center' }} className='headline1'>Material & Design</div>
                                 <div style={{ color: 'white', textAlign: 'center', paddingTop: '1rem' }} className='subtitle2'>
                                     Clothing comfort is one of the most important attributes of textile materials. Comfort cannot be reliably predicted by any single lab test of a fabric or by any series of different fabric tests.
                                     This is because comfort is inherently subjective. We here at Hira Fashion select Clothing with the best Quality & Comfort.
                                 </div>
                             </div>
-                            <div className='image-section'>
-                                <img src={BlackAndWhiteImage} alt='black fashion' />
-                            </div>
+
                         </div>
-                    </RevealFromBottom>
+                    </RevealFromLeft>
                 </Grid>
 
-                <Grid style={{ overflow: 'hidden', marginTop: '4rem' }} item xs={12} >
-                    <RevealFromBottom>
-                        <div className='box-content-right'>
+                <Grid style={{ overflow: 'hidden', margin: '8rem 0' }} item xs={12} >
+                    <RevealFromRight>
+                        <div className='box-content'>
                             <div className='image-section'>
-                                <img src={BlackAndWhiteImage} alt='black fashion' />
+                                <img src={BoxImage1} alt='black fashion' />
                             </div>
                             <div className='content-section'>
-                                <div style={{ color: 'white', textAlign: 'center' }} className='headline2'>Quality & Comfort</div>
+                                <div style={{ color: 'white', textAlign: 'center' }} className='headline1'>Quality & Comfort</div>
                                 <div style={{ color: 'white', textAlign: 'center', paddingTop: '1rem' }} className='subtitle2'>
                                     Clothing comfort is one of the most important attributes of textile materials. Comfort cannot be reliably predicted by any single lab test of a fabric or by any series of different fabric tests.
                                     This is because comfort is inherently subjective. We here at Hira Fashion select Clothing with the best Quality & Comfort.
@@ -108,7 +120,7 @@ const LandingPage = () => {
                             </div>
 
                         </div>
-                    </RevealFromBottom>
+                    </RevealFromRight>
                 </Grid>
 
 
@@ -140,21 +152,6 @@ const LandingPage = () => {
                             <button className='transparent-button'>SHOP NOW</button>
                         </div>
                     </div>
-                </Grid>
-
-
-                <Grid style={{ margin: '4rem 0 4rem 0', overflow: 'hidden' }} item xs={12}>
-                    <RevealFromBottom>
-                        <motion.div className='headline1'>
-                            <span style={{ fontWeight: 300 }} className='title1'>EXPLORING</span><br /> <span>The Fashion</span> <br /> <span style={{ fontWeight: 300 }} >Of Today</span>
-                        </motion.div>
-                        <ImageInfiniteSlider
-                            image1={isMobile ? LookbookMobile1 : Lookbook1}
-                            image2={isMobile ? LookbookMobile2 : Lookbook2}
-                            image3={isMobile ? LookbookMobile3 : Lookbook3}
-                            image4={isMobile ? LookbookMobile4 : Lookbook4}
-                        />
-                    </RevealFromBottom>
                 </Grid>
 
                 <Grid item xs={12}>

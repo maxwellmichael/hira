@@ -16,7 +16,7 @@ export const RevealFromBottom = ({ children }) => {
             y: 0,
             opacity: 1,
             transition: {
-                ease: 'linear',
+                ease: [0.6, 0.01, -0.05, 0.95],
                 duration: 1,
             }
         }
@@ -42,6 +42,47 @@ export const RevealFromBottom = ({ children }) => {
     );
 }
 
+export const RevealFromRight = ({ children }) => {
+
+    const { ref, inView } = useInView({ threshold: 0 });
+    const controls = useAnimation();
+
+    const controlsVariant = {
+        initial: {
+            x: 300,
+            opacity: 0,
+        },
+        animate: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                ease: [0.6, 0.01, -0.05, 0.95],
+                duration: 1,
+            }
+        }
+
+    }
+
+    useEffect(() => {
+        if (inView) {
+            controls.start('animate');
+        }
+        if (!inView) {
+            controls.start('initial');
+        }
+    }, [controls, inView]);
+
+
+    return (
+        <div ref={ref}>
+            <motion.div variants={controlsVariant} animate={controls}>
+                {children}
+            </motion.div>
+        </div>
+    );
+}
+
+
 export const RevealFromLeft = ({ children }) => {
 
     const { ref, inView } = useInView({ threshold: 0 });
@@ -56,7 +97,7 @@ export const RevealFromLeft = ({ children }) => {
             x: 0,
             opacity: 1,
             transition: {
-                ease: 'linear',
+                ease: [0.6, 0.01, -0.05, 0.95],
                 duration: 1,
             }
         }
