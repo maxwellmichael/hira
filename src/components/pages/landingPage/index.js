@@ -76,6 +76,41 @@ const LandingPage = () => {
                     </div>
                 </Grid>
 
+                <Grid style={{ overflow: 'hidden', marginTop: '4rem' }} item xs={12} >
+                    <RevealFromBottom>
+                        <div className='box-content-left'>
+                            <div className='content-section'>
+                                <div style={{ color: 'white', textAlign: 'center' }} className='headline2'>Quality & Comfort</div>
+                                <div style={{ color: 'white', textAlign: 'center', paddingTop: '1rem' }} className='subtitle2'>
+                                    Clothing comfort is one of the most important attributes of textile materials. Comfort cannot be reliably predicted by any single lab test of a fabric or by any series of different fabric tests.
+                                    This is because comfort is inherently subjective. We here at Hira Fashion select Clothing with the best Quality & Comfort.
+                                </div>
+                            </div>
+                            <div className='image-section'>
+                                <img src={BlackAndWhiteImage} alt='black fashion' />
+                            </div>
+                        </div>
+                    </RevealFromBottom>
+                </Grid>
+
+                <Grid style={{ overflow: 'hidden', marginTop: '4rem' }} item xs={12} >
+                    <RevealFromBottom>
+                        <div className='box-content-right'>
+                            <div className='image-section'>
+                                <img src={BlackAndWhiteImage} alt='black fashion' />
+                            </div>
+                            <div className='content-section'>
+                                <div style={{ color: 'white', textAlign: 'center' }} className='headline2'>Quality & Comfort</div>
+                                <div style={{ color: 'white', textAlign: 'center', paddingTop: '1rem' }} className='subtitle2'>
+                                    Clothing comfort is one of the most important attributes of textile materials. Comfort cannot be reliably predicted by any single lab test of a fabric or by any series of different fabric tests.
+                                    This is because comfort is inherently subjective. We here at Hira Fashion select Clothing with the best Quality & Comfort.
+                                </div>
+                            </div>
+
+                        </div>
+                    </RevealFromBottom>
+                </Grid>
+
 
                 <Grid style={{ margin: '8rem 0 8rem 0', overflow: 'hidden' }} item xs={12}>
 
@@ -93,26 +128,6 @@ const LandingPage = () => {
                                 image4={isMobile ? AnimationImageMobile4 : AnimationImage4}
                             />
                         </AnimatePresence>
-                    </RevealFromBottom>
-                </Grid>
-
-                <Grid style={{ overflow: 'hidden', marginTop: '4rem' }} item xs={12} >
-                    <RevealFromBottom>
-                        <div className='black-box-banner'>
-
-                            <div className='content-section'>
-                                <div style={{ color: 'white', textAlign: 'center' }} className='headline2'>Quality & Comfort</div>
-                                <div style={{ color: 'white', textAlign: 'center',paddingTop: '1rem' }} className='subtitle2'>
-                                    The outfits that you get on our website are all latest and made from premium quality of fabric that is durable and long lasting. You get all the types of traditional clothes with beautiful embroidery work and prints and you can also buy matching accessories for your dresses from the same destination.
-                                </div>
-                            </div>
-
-                            <div className='image-section'>
-                                <img src={BlackAndWhiteImage} alt='black fashion' />
-                            </div>
-
-                        </div>
-
                     </RevealFromBottom>
                 </Grid>
 
