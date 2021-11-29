@@ -67,9 +67,9 @@ const Register = (props) => {
 
             <Grid item xs={12}>
               <div className='subtitle1'>Already have an account?</div>
-              <button className='form-button2'>
+              <div className='form-button2'>
                 <Link style={{ color: 'rgba(0, 0, 0, 0.87)', textDecoration: 'none' }} to='/user/login'>LOGIN</Link>
-              </button>
+              </div>
             </Grid>
           </Grid>
         </form>

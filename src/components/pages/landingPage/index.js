@@ -28,6 +28,7 @@ import LookbookMobile1 from '../../../images/banners/lookbook-1-mobile.webp'
 import LookbookMobile2 from '../../../images/banners/lookbook-2-mobile.webp';
 import LookbookMobile3 from '../../../images/banners/lookbook-3-mobile.webp';
 import LookbookMobile4 from '../../../images/banners/lookbook-4-mobile.webp';
+import BlackAndWhiteImage from '../../../images/banners/black-box-banner-image.webp';
 import TextAnimation1 from '../../utils/animations/textAnimations';
 
 // const FixedBanner = lazy(() => import('../../../images/banners/dress-banner-desktop.webp'))
@@ -76,7 +77,7 @@ const LandingPage = () => {
                 </Grid>
 
 
-                <Grid style={{ margin: '8rem 0 8rem 0' }} item xs={12}>
+                <Grid style={{ margin: '8rem 0 8rem 0', overflow: 'hidden' }} item xs={12}>
 
                     <div className='headline1'>
                         <TextAnimation1 type="heading1" text="Best Of Designs" />
@@ -92,6 +93,26 @@ const LandingPage = () => {
                                 image4={isMobile ? AnimationImageMobile4 : AnimationImage4}
                             />
                         </AnimatePresence>
+                    </RevealFromBottom>
+                </Grid>
+
+                <Grid style={{ overflow: 'hidden', marginTop: '4rem' }} item xs={12} >
+                    <RevealFromBottom>
+                        <div className='black-box-banner'>
+
+                            <div className='content-section'>
+                                <div style={{ color: 'white', textAlign: 'center' }} className='headline2'>Quality & Comfort</div>
+                                <div style={{ color: 'white', textAlign: 'center',paddingTop: '1rem' }} className='subtitle2'>
+                                    The outfits that you get on our website are all latest and made from premium quality of fabric that is durable and long lasting. You get all the types of traditional clothes with beautiful embroidery work and prints and you can also buy matching accessories for your dresses from the same destination.
+                                </div>
+                            </div>
+
+                            <div className='image-section'>
+                                <img src={BlackAndWhiteImage} alt='black fashion' />
+                            </div>
+
+                        </div>
+
                     </RevealFromBottom>
                 </Grid>
 

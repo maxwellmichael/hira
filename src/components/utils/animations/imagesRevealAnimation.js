@@ -40,7 +40,7 @@ export const ImagesRevealAnimation = ({ mainImage, image1, image2, image3, image
     },
     exit: {
       opacity: 0,
-      y: -200,
+      y:0,
       transition: {
         ease: "easeInOut",
         duration: 0.6,

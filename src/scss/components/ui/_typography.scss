@@ -93,7 +93,7 @@
     font-weight: 400;
     font-size: 1.2rem;
     color: #1f1f21;
-    line-height: 1.5;
+    line-height: 2.6;
     text-rendering: optimizeLegibility;
 }
 
@@ -102,8 +102,11 @@
     font-weight: 400;
     font-size: 1rem;
     color: #1f1f21;
-    line-height: 1.5;
+    line-height: 2;
     text-rendering: optimizeLegibility;
+    @media screen and(max-width:900px) {
+        font-size: 0.65rem;
+    }
 }
 
 .subtitle3 {
@@ -111,7 +114,7 @@
     font-weight: 400;
     font-size: 0.8rem;
     color: #1f1f21;
-    line-height: 1.5;
+    line-height: 1.7;
     text-rendering: optimizeLegibility;
 }
 
