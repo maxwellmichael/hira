@@ -6,10 +6,12 @@ import { motion } from 'framer-motion';
 import { PageLoadVariant1 } from '../../../../../variants/pageLoadVariants';
 import QuantityButton from '../../../../utils/quantityButton';
 import StarRatingDisplay from '../../../../utils/starRatingDisplay';
+import { ADD_PRODUCT_TO_FIRESTORE_CART } from '../../../../../redux/actions/cart.actions';
+import { useDispatch } from 'react-redux';
 
 const ProductDetailsView = (props) => {
     const product = props.location.state;
-
+    const dispatch = useDispatch();
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const isMobile = useMediaQuery('(max-width:900px)');
@@ -34,7 +36,7 @@ const ProductDetailsView = (props) => {
     }
 
     const handleAddToCart = () => {
-
+        dispatch(ADD_PRODUCT_TO_FIRESTORE_CART(product));
     }
 
 

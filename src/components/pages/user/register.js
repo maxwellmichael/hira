@@ -4,8 +4,6 @@ import { REGISTER } from '../../../redux/actions/user.actions';
 import { connect } from 'react-redux';
 import { TextField, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -35,7 +33,6 @@ const Register = (props) => {
   });
 
   return (
-    <motion.div variant={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
       <Grid style={{ margin: 0, overflow: 'hidden' }} container>
         <form className='form-main' onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={4}>
@@ -74,7 +71,6 @@ const Register = (props) => {
           </Grid>
         </form>
       </Grid>
-    </motion.div>
   );
 };
 

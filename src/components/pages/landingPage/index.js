@@ -87,7 +87,7 @@ const LandingPage = () => {
                     </div>
                 </Grid>
 
-                <Grid style={{ overflow: 'hidden', margin: ' 4rem 0 8rem 0' }} item xs={12} >
+                <Grid style={{ overflow: 'hidden', margin: ' 4rem 0' }} item xs={12} >
                     <RevealFromLeft>
                         <div className='box-content'>
                             <div className='image-section'>
@@ -105,7 +105,7 @@ const LandingPage = () => {
                     </RevealFromLeft>
                 </Grid>
 
-                <Grid style={{ overflow: 'hidden', margin: '8rem 0' }} item xs={12} >
+                <Grid style={{ overflow: 'hidden', margin: '4rem 0' }} item xs={12} >
                     <RevealFromRight>
                         <div className='box-content'>
                             <div className='image-section'>

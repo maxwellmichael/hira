@@ -67,7 +67,7 @@ const Footer = ()=>{
                 </Grid>
 
                 <Grid item xs={4}>
-                    <div className='footer-title'><a href='https://www.linkedin.com/in/maxwell-michael-3b4832168/'>Website Designed & Developed by Maxwell</a></div>
+                    <div className='footer-title'><a href='https://www.linkedin.com/in/maxwell-michael-3b4832168/'>Designed & Developed by Maxwell</a></div>
                 </Grid>
                 
                 <Grid item xs={4}>

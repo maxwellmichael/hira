@@ -6,8 +6,6 @@ import { TextField, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { auth } from '../../../firebase/authServices';
-import { motion } from 'framer-motion';
-import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import { ReactComponent as GoogleLogo } from '../../../images/icons/google_logo.svg';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -45,7 +43,6 @@ const { handleSubmit, register, formState: { errors } } = useForm({resolver: yup
   });
 
   return (
-    <motion.div variant={PageLoadVariant1} initial="initial" animate="animate" exit="exit">
       <Grid style={{ margin: 0, overflow: 'hidden' }} container>
         <form className='form-main' onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={4}>
@@ -84,7 +81,6 @@ const { handleSubmit, register, formState: { errors } } = useForm({resolver: yup
           </Grid>
         </form>
       </Grid>
-    </motion.div>
   );
 };
 

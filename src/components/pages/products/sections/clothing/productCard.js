@@ -2,8 +2,6 @@ import { Grid} from '@material-ui/core';
 import { connect } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
-// import { ADD_PRODUCT_TO_FIRESTORE_CART } from '../../../../../redux/actions/cart.actions';
-// import { IoMdAdd } from 'react-icons/io';
 import { useHistory } from 'react-router-dom';
 import StarRatingDisplay from '../../../../utils/starRatingDisplay';
 
