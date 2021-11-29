@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import Modal from '../utils/modals';
 import NavBar from './navbar';
 import LoadingView from '../utils/loadingView';
+import { AnimatePresence } from 'framer-motion';
 
 const Layout = ({ modal, loader, children }) => {
     return (
-        <div style={{ backgroundColor: '#fff', overflow:'hidden' }} className='layout'>
+        <div style={{ backgroundColor: '#fff', overflow: 'hidden' }} className='layout'>
             {modal.isVisible ? <Modal /> : null}
-            {loader.isVisible ? <LoadingView value={loader.value} /> : null}
+            <AnimatePresence>
+                {loader.isVisible ? <LoadingView key='loading-screen' value={loader.value} /> : null}
+            </AnimatePresence>
             <NavBar />
             <div style={{ marginTop: '4rem' }}>
                 {children}

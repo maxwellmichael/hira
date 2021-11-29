@@ -58,7 +58,7 @@ const LandingPage = ({dispatch }) => {
             {
                 id: 1,
                 src: FixedBanner,
-                loadPoint: 10,
+                loadPoint: 5,
             },
             {
                 id: 2,
@@ -114,6 +114,7 @@ const LandingPage = ({dispatch }) => {
         ];
 
         dispatch(SHOW_LOADER());
+        dispatch(INCREMENT_LOADER_VALUE(5));
         const loadImage = image => {
             return new Promise((resolve, reject) => {
                 const loadImg = new Image()
@@ -131,7 +132,10 @@ const LandingPage = ({dispatch }) => {
 
         Promise.all(loadableImages.map(image => loadImage(image)))
             .then(() => dispatch(HIDE_LOADER()))
-            .catch(err => console.log("Failed to load images", err))
+            .catch(err => {
+                dispatch(HIDE_LOADER())
+                console.log("Failed to load images", err);
+            })
     }, [dispatch]);
 
 

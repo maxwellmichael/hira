@@ -1,4 +1,4 @@
-.loading-main{
+.loading-main {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -8,4 +8,24 @@
     background-color: black;
     position: fixed;
     z-index: 9999999;
+
+    @keyframes spinner {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spinner {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        border: 2px solid #000000;
+        border-top-color: white;
+        border-right-color: #000000;
+        border-bottom-color: white;
+        animation: spinner 0.6s linear infinite;
+    }
 }
