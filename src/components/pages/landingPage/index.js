@@ -2,66 +2,137 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Grid } from '@material-ui/core';
 import { useMediaQuery } from '@material-ui/core';
 import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { PageLoadVariant1 } from '../../../variants/pageLoadVariants';
 import { ImagesRevealAnimation, ImageInfiniteSlider } from '../../utils/animations/imagesRevealAnimation';
 import { RevealFromBottom, RevealFromLeft, RevealFromRight } from '../../utils/animations/contentRevealAnimations';
+import TextAnimation1 from '../../utils/animations/textAnimations';
+import { HIDE_LOADER, INCREMENT_LOADER_VALUE, SHOW_LOADER } from '../../../redux/actions/loader.actions';
 
+//   Images & Videos
 import FixedBanner from '../../../images/banners/dress-banner-desktop.webp';
+
 import AnimationVideo from '../../../images/banners/landing-page-video.webm'
 import AnimationVideoMobile from '../../../images/banners/landing-page-video-mobile.webm'
+
 import AnimationImage1 from '../../../images/banners/animation-image-1.webp';
 import AnimationImage2 from '../../../images/banners/animation-image-2.webp';
 import AnimationImage3 from '../../../images/banners/animation-image-3.webp';
 import AnimationImage4 from '../../../images/banners/animation-image-4.webp';
+
 import AnimationImageMobile1 from '../../../images/banners/animation-image-1-mobile.webp';
 import AnimationImageMobile2 from '../../../images/banners/animation-image-2-mobile.webp';
 import AnimationImageMobile3 from '../../../images/banners/animation-image-3-mobile.webp';
 import AnimationImageMobile4 from '../../../images/banners/animation-image-4-mobile.webp';
+
 import Lookbook1 from '../../../images/banners/lookbook-1.webp'
 import Lookbook2 from '../../../images/banners/lookbook-2.webp';
 import Lookbook3 from '../../../images/banners/lookbook-3.webp';
 import Lookbook4 from '../../../images/banners/lookbook-4.webp';
+
 import LookbookMobile1 from '../../../images/banners/lookbook-1-mobile.webp'
 import LookbookMobile2 from '../../../images/banners/lookbook-2-mobile.webp';
 import LookbookMobile3 from '../../../images/banners/lookbook-3-mobile.webp';
 import LookbookMobile4 from '../../../images/banners/lookbook-4-mobile.webp';
+
 import BoxImage1 from '../../../images/banners/box-image1.webp';
 import BoxImage2 from '../../../images/banners/box-image2.webp';
 
-import TextAnimation1 from '../../utils/animations/textAnimations';
-
-// const FixedBanner = lazy(() => import('../../../images/banners/dress-banner-desktop.webp'))
-// const AnimationVideo = lazy(() => import('../../../images/banners/landing-page-video.webm'))
-// const AnimationVideoMobile = lazy(() => import('../../../images/banners/landing-page-video-mobile.webm'))
-// const AnimationImage1 = lazy(() => import('../../../images/banners/animation-image-1.webp'))
-// const AnimationImage2 = lazy(() => import('../../../images/banners/animation-image-2.webp'))
-// const AnimationImage3 = lazy(() => import('../../../images/banners/animation-image-3.webp'))
-// const AnimationImage4 = lazy(() => import('../../../images/banners/animation-image-4.webp'))
-// const AnimationImageMobile1 = lazy(() => import('../../../images/banners/animation-image-1-mobile.webp'))
-// const AnimationImageMobile2 = lazy(() => import('../../../images/banners/animation-image-2-mobile.webp'))
-// const AnimationImageMobile3 = lazy(() => import('../../../images/banners/animation-image-3-mobile.webp'))
-// const AnimationImageMobile4 = lazy(() => import('../../../images/banners/animation-image-4-mobile.webp'))
-// const Lookbook1 = lazy(() => import('../../../images/banners/lookbook-1.webp'))
-// const Lookbook2 = lazy(() => import('../../../images/banners/lookbook-2.webp'))
-// const Lookbook3 = lazy(() => import('../../../images/banners/lookbook-3.webp'))
-// const Lookbook4 = lazy(() => import('../../../images/banners/lookbook-4.webp'))
-// const LookbookMobile1 = lazy(() => import('../../../images/banners/lookbook-1-mobile.webp'))
-// const LookbookMobile2 = lazy(() => import('../../../images/banners/lookbook-2-mobile.webp'))
-// const LookbookMobile3 = lazy(() => import('../../../images/banners/lookbook-3-mobile.webp'))
-// const LookbookMobile4 = lazy(() => import('../../../images/banners/lookbook-4-mobile.webp'))
 
 
 
 
 
-const LandingPage = () => {
+const LandingPage = ({dispatch }) => {
+
 
     const isMobile = useMediaQuery('(max-width:900px)');
-
+   
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
+
+    useEffect(() => {
+        const loadableImages = [
+            {
+                id: 1,
+                src: FixedBanner,
+                loadPoint: 10,
+            },
+            {
+                id: 2,
+                src: window.innerWidth<=900 ? AnimationImageMobile1 : AnimationImage1,
+                loadPoint: 10,
+            },
+            {
+                id: 3,
+                src: window.innerWidth<=900 ? AnimationImageMobile2 : AnimationImage2,
+                loadPoint: 10,
+            },
+            {
+                id: 4,
+                src: window.innerWidth<=900 ? AnimationImageMobile3 : AnimationImage3,
+                loadPoint: 10,
+            },
+            {
+                id: 5,
+                src: window.innerWidth<=900 ? AnimationImageMobile4 : AnimationImage4,
+                loadPoint: 10,
+            },
+            {
+                id: 6,
+                src: window.innerWidth<=900 ? LookbookMobile1 : Lookbook1,
+                loadPoint: 10,
+            },
+            {
+                id: 7,
+                src: window.innerWidth<=900 ? LookbookMobile2 : Lookbook2,
+                loadPoint: 10,
+            },
+            {
+                id: 8,
+                src: window.innerWidth<=900 ? LookbookMobile3 : Lookbook3,
+                loadPoint: 10,
+            },
+            {
+                id: 9,
+                src: window.innerWidth<=900 ? LookbookMobile4 : Lookbook4,
+                loadPoint: 10,
+            },
+            {
+                id: 10,
+                src: BoxImage1,
+                loadPoint: 5,
+            },
+            {
+                id: 11,
+                src: BoxImage2,
+                loadPoint: 5,
+            },
+    
+        ];
+
+        dispatch(SHOW_LOADER());
+        const loadImage = image => {
+            return new Promise((resolve, reject) => {
+                const loadImg = new Image()
+                loadImg.src = image.src
+                loadImg.onload = () => {
+                    dispatch(INCREMENT_LOADER_VALUE(image.loadPoint))
+                    return setTimeout(() => {
+                        resolve(image.src)
+                    }, 100)
+                }
+
+                loadImg.onerror = err => reject(err)
+            })
+        }
+
+        Promise.all(loadableImages.map(image => loadImage(image)))
+            .then(() => dispatch(HIDE_LOADER()))
+            .catch(err => console.log("Failed to load images", err))
+    }, [dispatch]);
 
 
     return (
@@ -177,4 +248,11 @@ const LandingPage = () => {
     )
 }
 
-export default LandingPage;
+// const mapStateToProps = (state) => {
+
+//     return {
+//         loader: state.loader,
+//     }
+// }
+
+export default connect()(LandingPage);

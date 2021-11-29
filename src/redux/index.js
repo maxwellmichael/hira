@@ -7,6 +7,7 @@ import addressReducer from './reducers/address.reducer';
 import filterCheckBoxReducer from './reducers/filterCheckBox.reducer';
 import ordersReducer from './reducers/orders.reducer';
 import { firestoreReducer } from 'redux-firestore';
+import loaderReducer from './reducers/loader.reducer';
 
 
 const rootReducer = combineReducers(
@@ -19,6 +20,7 @@ const rootReducer = combineReducers(
         address: addressReducer,
         filterCheckBox: filterCheckBoxReducer,
         orders: ordersReducer,
+        loader: loaderReducer,
     }
 );
 
